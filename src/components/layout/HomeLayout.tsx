@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import FilterSideMenu from "../navigation/FilterSideMenu";
 import Banners from "../widgets/Banners";
 import BannerText from "./BannerText";
@@ -6,16 +7,17 @@ interface HomeLayoutProps {
   children: React.ReactNode;
 }
 
-const HomeLayout = ({ children }: HomeLayoutProps) => {
+const HomeLayout = ( ) => {
   return (
-    <div>
+    <div className="bg-background text-white">
       <FilterSideMenu />
       <div className="space-y-3">
         <div>
           <Banners />
           <BannerText />
         </div>
-        {children}
+        {/* {children} */}
+        <Outlet/>
       </div>
     </div>
   );

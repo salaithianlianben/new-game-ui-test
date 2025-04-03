@@ -48,8 +48,7 @@ const HomePage = () => {
   }, [game_types, isLoadingGameTypes]);
 
   return (
-    <HomeLayout>
-      <TabsLayout
+       <TabsLayout
         searchValue={searchValue}
         onChangeInput={(v) => setSearchValue(v)}
       >
@@ -110,8 +109,7 @@ const HomePage = () => {
         </div>
         <></>
       </TabsLayout>
-    </HomeLayout>
-  );
+   );
 };
 
 export default HomePage;

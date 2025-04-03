@@ -1,1 +1,43 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    /* Custom base styles */
+  }
+  
+
+  body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #171717;
+  color: white;
+}
+ 
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 5px;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+      display: none;
+  }
+ /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
+}

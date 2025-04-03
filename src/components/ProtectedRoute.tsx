@@ -1,5 +1,5 @@
 import { useAuth } from "../context/AuthContext";
-import { useEffect, ReactNode } from "react";
+import {  ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface ProtectedRouteProps {
@@ -10,11 +10,11 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { user, isLoading } = useAuth();
   const router = useNavigate();
 
-  useEffect(() => {
-    if (!isLoading && !user) {
-      router("/login");
-    }
-  }, [user, isLoading, router]);
+  // useEffect(() => {
+  //   if (!isLoading && !user) {
+  //     router("/login");
+  //   }
+  // }, [user, isLoading, router]);
 
   if (isLoading) {
     return <div>Loading...</div>;
