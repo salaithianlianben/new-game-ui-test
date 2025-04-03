@@ -42,7 +42,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         // If no token exists, no need to call API
         setUser(null);
         setIsLoading(false);
-        router("/login");
+        // router("/login");
         return;
       }
       

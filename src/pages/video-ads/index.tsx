@@ -31,7 +31,7 @@ const VideoAds = () => {
 
   return (
     <div className="space-y-5 p-5">
-      {data.map((v, idx) => (
+       {data.map((v, idx) => (
         <div key={idx} className="relative">
           <video
             ref={videoRef}

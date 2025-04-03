@@ -151,13 +151,13 @@ const LoginPage = () => {
         </div>
 
         <div className="absolute bottom-0 w-full mt-10">
-          <div className="flex justify-center w-full mx-auto">
+          <div className="flex justify-center w-full mx-auto -mb-2">
             <img
               src={"/images/leftPattern.svg"}
               alt="Left Pattern"
               className="h-[50px] w-[50px]"
             />
-            <p className="bg-secondary pt-2">New member?</p>
+            <p className="bg-secondary pt-1 h-10 mt-2">New member?</p>
             <img
               src={"/images/rightPattern.svg"}
               className="h-[50px] w-[50px]"

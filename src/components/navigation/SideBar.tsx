@@ -6,7 +6,7 @@ import { RiAdvertisementLine } from "react-icons/ri";
 import { Skeleton } from "../ui/skeleton";
 import UserInfo from "./UserInfo";
 import { fetchContractInformation } from "../../services/contactService";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../configs/translations";
 
@@ -63,12 +63,12 @@ const SideBar = ({ className }: SideMenuProps) => {
     >
       <div className="flex flex-col gap-2 justify-between h-full">
         <div className="flex h-[60px] items-center px-6">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="flex items-center gap-2 font-semibold"
           >
             <span className="">Super Bonus</span>
-          </a>
+          </Link>
         </div>
         <div className="p-5">
           <UserInfo />
@@ -79,9 +79,9 @@ const SideBar = ({ className }: SideMenuProps) => {
               const isActive =
                 item.path === "/" ? isHomeActive : location.pathname === item.path;
               return (
-                <a
+                <Link
                   key={idx}
-                  href={item.path}
+                  to={item.path}
                   className={`flex items-center gap-3 rounded px-3 py-2 ${
                     isActive
                       ? "bg-secondary text-active"
@@ -90,7 +90,7 @@ const SideBar = ({ className }: SideMenuProps) => {
                 >
                   {item.icon}
                   {item.label}
-                </a>
+                </Link>
               );
             })}
           </nav>

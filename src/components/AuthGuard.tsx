@@ -1,9 +1,6 @@
 import { useAuth } from "../context/AuthContext";
 import TopNav from "./navigation/TopNav";
-
-import { useEffect } from "react";
 import Loading from "./ui/loading";
-import { isEmpty } from "lodash";
 import SideBar from "./navigation/SideBar";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -13,21 +10,21 @@ interface AuthProviderProps {
 
 const AuthGuard = ({ children }: AuthProviderProps) => {
   const location = useLocation();
-  const router = useNavigate();
-  const { user, isLoading } = useAuth();
+  // const router = useNavigate();
+  const {  isLoading } = useAuth();
 
   const isAuthRoute =
     location.pathname.startsWith("/login") ||
     location.pathname.startsWith("/register");
 
-  useEffect(() => {
-    if (!isLoading && user && isAuthRoute) {
-      router("/");
-    }
-    console.log(isEmpty(localStorage.getItem("token")) && !isAuthRoute);
-    if (isEmpty(localStorage.getItem("token")) && !isAuthRoute)
-      router("/login");
-  }, [user, isLoading, isAuthRoute, router]);
+  // useEffect(() => {
+  //   if (!isLoading && user && isAuthRoute) {
+  //     router("/");
+  //   }
+  //   console.log(isEmpty(localStorage.getItem("token")) && !isAuthRoute);
+  //   if (isEmpty(localStorage.getItem("token")) && !isAuthRoute)
+  //     router("/login");
+  // }, [user, isLoading, isAuthRoute, router]);
 
   return (
     <Loading loading={isLoading}>
@@ -36,7 +33,7 @@ const AuthGuard = ({ children }: AuthProviderProps) => {
           <div className="h-full w-full">{children}</div>
         </main>
       ) : (
-        <main className="grid min-h-screen w-full lg:grid-cols-[20%_1fr]">
+        <main className="bg-background text-white grid min-h-screen w-full lg:grid-cols-[20%_1fr]">
           <SideBar className="h-screen sticky top-0" />
           <div className="flex flex-col h-screen">
             <TopNav className="sticky top-0 z-10" />
