@@ -59,7 +59,7 @@ const FilterSideMenu = () => {
       <SheetTrigger>
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-active p-3 cursor-pointer rounded-full text-secondary absolute bottom-4 right-4"
+          className="bg-active p-3 cursor-pointer rounded-full text-secondary fixed bottom-4 right-4 z-[99]"
         >
           <FilterIcon size={14} />
         </button>

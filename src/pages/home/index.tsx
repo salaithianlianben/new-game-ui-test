@@ -51,7 +51,7 @@ const HomePage = () => {
       searchValue={searchValue}
       onChangeInput={(v) => setSearchValue(v)}
     >
-      <div className="space-y-5 px-5">
+      <div className="space-y-5 px-5 pb-10">
         {isLoading || isLoadingGameTypes ? (
           <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full">
             <GameListSkeleton />
@@ -70,12 +70,12 @@ const HomePage = () => {
               {/* className="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full" */}
               {g.products.length > 0 ? (
                 <>
-                  <Carousel className="max-w-[100vw] lg:max-w-[80vw] ">
+                  <Carousel className=" max-w-[100vw] lg:max-w-[80vw] ">
                     <CarouselContent>
                       {g.products?.map((gp, idx) => (
                         <CarouselItem
                           key={idx}
-                          className="basis-1/5 sm:basis-1/4 md:basis-1/5 lg:basis-1/7 xl:basis-1/8 cursor-pointer space-y-2"
+                          className=" basis-1/3 sm:basis-1/5 md:basis-1/5 lg:basis-1/6  cursor-pointer space-y-2"
                           onClick={() =>
                             router(`game-type/${g.id}?provider=${gp.id}`)
                           }
@@ -89,11 +89,11 @@ const HomePage = () => {
                           </div>
                           <p className="text-xs text-center font-bold">
                             {gp.name}
-                          </p>
+                           </p>
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <div className="absolute -top-[15%] right-[15%] sm:right-[12%] md:right-[8%] ">
+                    <div className="absolute -top-[25%] sm:-top-[15%] right-[7%] sm:right-[5%] md:right-[3%] ">
                       <CarouselPrevious className="!border-white !border-2" />
                       <CarouselNext className="-left-2 !border-white !border-2" />
                     </div>

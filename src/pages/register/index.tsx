@@ -89,19 +89,20 @@ const RegisterPage = () => {
 
   return (
     <div className="min-h-screen w-full grid lg:grid-cols-2">
-      <div className="w-full relative">
-        <div className="min-h-[80vh] flex flex-col items-center justify-center">
+      <div className="w-full  relative">
+       <div className={`${errors ? '' :'h-[80vh] flex items-center justify-center'} w-full  `}>
+       <div className="min-h-[60vh] flex flex-col items-center justify-center">
           <img
-            className="my-5 lg:hidden w-[120px] h-[120px]"
+            className={`${errors ? '' :'my-5'} lg:hidden w-[100px] h-[100px]`}
             src={"/images/logo.png"}
             alt="Logo"
           />
-          <h1 className="my-10 hidden bg-gradient-to-r from-[#b2ff54] via-[#57b400] to-[#87600c] bg-clip-text py-[10px] text-4xl font-black uppercase text-transparent lg:block">
+          <h1 className={`mt-10 mb-4  hidden bg-gradient-to-r from-[#b2ff54] via-[#57b400] to-[#87600c] bg-clip-text py-[10px] text-4xl font-black uppercase text-transparent lg:block`}>
             REGISTER
           </h1>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className={`space-y-4`}>
             {/* Mobile Number */}
-            <div className="space-y-2">
+            <div className="space-y-0.5">
               <div className="w-full px-2 flex items-center gap-1 border-l-2 border-x-active pb-1 border-b-2 border-y-black">
                 <PhoneIcon className="text-active" aria-label="Phone Icon" />
                 <Input
@@ -118,7 +119,7 @@ const RegisterPage = () => {
             </div>
 
             {/* Name */}
-            <div className="space-y-2">
+            <div className="space-y-0.5">
               <div className="w-full px-2 flex items-center gap-1 border-l-2 border-x-active pb-1 border-b-2 border-y-black">
                 <UserIcon className="text-active" aria-label="Name Icon" />
                 <Input
@@ -133,7 +134,7 @@ const RegisterPage = () => {
             </div>
 
             {/* Password */}
-            <div className="space-y-2">
+            <div className="space-y-0.5">
               <div className="w-full px-2 flex items-center justify-between gap-1 border-l-2 border-x-active pb-1 border-b-2 border-y-black">
                 <div className="flex items-center gap-1">
                   <LockIcon
@@ -169,7 +170,7 @@ const RegisterPage = () => {
             </div>
 
             {/* Confirm Password */}
-            <div className="space-y-2">
+            <div className="space-y-0.5">
               <div className="w-full px-2 flex items-center justify-between gap-1 border-l-2 border-x-active pb-1 border-b-2 border-y-black">
                 <div className="flex items-center gap-1">
                   <LockIcon
@@ -205,7 +206,7 @@ const RegisterPage = () => {
             </div>
 
             {/* Agent Code */}
-            <div className="space-y-2">
+            <div className="space-y-0.5">
               <div className="w-full px-2 flex items-center gap-1 border-l-2 border-x-active pb-1 border-b-2 border-y-black">
                 <UserCogIcon
                   className="text-active"
@@ -232,7 +233,7 @@ const RegisterPage = () => {
               <Button
                 type="submit"
                 disabled={isPending}
-                className="w-max border px-16 mt-6 bg-active border-active text-black hover:text-active text-base font-bold rounded-full"
+                className="w-max border px-16 mt-3 bg-active border-active text-black hover:text-active text-base font-bold rounded-full"
               >
                 {isPending ? (
                   <Loader2Icon className="h-4 w-4 animate-spin" />
@@ -243,7 +244,8 @@ const RegisterPage = () => {
             </div>
           </form>
         </div>
-
+       </div>
+ 
         <div className="absolute bottom-0 w-full mt-10">
           <div className="flex justify-center w-full mx-auto -mb-2">
             <img
@@ -258,7 +260,7 @@ const RegisterPage = () => {
               alt="Right Pattern"
             />
           </div>
-          <div className="text-center bg-secondary py-10">
+          <div className="text-center bg-secondary py-4">
             <Button
               onClick={() => router("/login")}
               className="px-12 border bg-black hover:bg-white border-white text-white hover:text-black font-bold rounded-full"

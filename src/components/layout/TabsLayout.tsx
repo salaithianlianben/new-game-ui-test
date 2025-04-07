@@ -42,16 +42,16 @@ const TabsLayout = ({
 
   return (
     <div className="h-full w-full space-y-2">
-      <div className="flex flex-row justify-between items-center px-3">
-        <div className="hidden md:block">
+      <div className="flex flex-row justify-between px-3">
+        <div className="w-4/5 hidden md:block">
           {isLoading ? (
             <TabSkeleton />
           ) : (
             <Tabs tabs={tabs} initialActiveIndex={0} />
           )}
         </div>
-        <div>
-          <div className="flex flex-row space-x-2 items-center border border-input px-5 rounded-full bg-secondary ">
+        <div className="w-full md:w-2/6 lg:w-1/5 mb-5 lg:mb-0"> 
+          <div className="flex flex-row space-x-2 items-center border border-input px-5 rounded-full bg-secondary mt-4">
             <SearchIcon className="h-4 w-4" />
             <Input
               placeholder="Search"
