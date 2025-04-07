@@ -31,29 +31,35 @@ const VideoAds = () => {
 
   return (
     <div className="space-y-5 p-5">
-       {data.map((v, idx) => (
-        <div key={idx} className="relative">
-          <video
-            ref={videoRef}
-            src={v.video_url}
-            autoPlay
-            muted={isMuted}
-            loop={true}
-            playsInline
-            style={{ width: "100%", height: "auto" }}
-          />
-          <button
-            className="absolute top-4 right-4"
-            onClick={() => setIsMuted(!isMuted)}
-          >
-            {isMuted ? (
-              <VolumeXIcon className="h-5 w-5" />
-            ) : (
-              <Volume2Icon className="h-5 w-5" />
-            )}
-          </button>
+      {data.length > 0 ? (
+        data.map((v, idx) => (
+          <div key={idx} className="relative">
+            <video
+              ref={videoRef}
+              src={v.video_url}
+              autoPlay
+              muted={isMuted}
+              loop={true}
+              playsInline
+              style={{ width: "100%", height: "auto" }}
+            />
+            <button
+              className="absolute top-4 right-4"
+              onClick={() => setIsMuted(!isMuted)}
+            >
+              {isMuted ? (
+                <VolumeXIcon className="h-5 w-5" />
+              ) : (
+                <Volume2Icon className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+        ))
+      ) : (
+        <div>
+          <span className="text-gray-500">No video-ads records</span>
         </div>
-      ))}
+      )}
     </div>
   );
 };

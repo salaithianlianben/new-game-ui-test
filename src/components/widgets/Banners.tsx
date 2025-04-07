@@ -1,4 +1,3 @@
-
 import {
   Carousel,
   CarouselContent,
@@ -10,16 +9,16 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchBanners } from "../../services/bannerService";
 
 const Banners = () => {
-  const { data } = useQuery({
+  const { data = [] } = useQuery({
     queryKey: ["GET_BANNERS"],
     queryFn: fetchBanners,
   });
 
-  return (
+  return data.length > 0 ? (
     <div className="w-full relative">
       <Carousel opts={{ loop: true }} className="relative w-full">
         <CarouselContent>
-          {data?.map((item, index) => {
+          {data.map((item, index) => {
             return (
               <CarouselItem key={index}>
                 <img
@@ -36,7 +35,7 @@ const Banners = () => {
         </div>
       </Carousel>
     </div>
-  );
+  ) : null;
 };
 
 export default Banners;

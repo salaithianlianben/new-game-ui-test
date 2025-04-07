@@ -10,6 +10,7 @@ import VideoAds from "../pages/video-ads";
 import HotGamesView from "../pages/hot-games";
 import GameTypeView from "../pages/game-type";
 import { AuthProvider } from "../context/AuthContext";
+import AppLayout from "../components/layout/AppLayout";
 
 const routers = createBrowserRouter([
   {
@@ -17,45 +18,57 @@ const routers = createBrowserRouter([
     element: (
       <AuthProvider>
         <AuthGuard>
-          <HomeLayout />
+          <AppLayout />
         </AuthGuard>
       </AuthProvider>
     ),
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: (
+          <HomeLayout>
+            <HomePage />
+          </HomeLayout>
+        ),
       },
       {
         path: "game-type/:id",
-        element: <GameTypeView />
+        element: (
+          <HomeLayout>
+            <GameTypeView />
+          </HomeLayout>
+        ),
       },
       {
         path: "hot-games",
-        element: <HotGamesView />
+        element: (
+          <HomeLayout>
+            <HotGamesView />
+          </HomeLayout>
+        ),
       },
       {
         path: "profile",
-        element: <ProfileView />
+        element: <ProfileView />,
       },
       {
         path: "promotions",
-        element: <PromotionView />
+        element: <PromotionView />,
       },
       {
         path: "video-ads",
-        element: <VideoAds />
-      }
+        element: <VideoAds />,
+      },
     ],
   },
   {
-    path: '/login',
-    element: <LoginPage />
+    path: "/login",
+    element: <LoginPage />,
   },
   {
-    path: '/register',
-    element: <RegisterPage />
-  }
+    path: "/register",
+    element: <RegisterPage />,
+  },
 ]);
 
 export default routers;

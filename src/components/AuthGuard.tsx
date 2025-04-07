@@ -2,7 +2,7 @@ import { useAuth } from "../context/AuthContext";
 import TopNav from "./navigation/TopNav";
 import Loading from "./ui/loading";
 import SideBar from "./navigation/SideBar";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 interface AuthProviderProps {
   children: React.ReactNode;

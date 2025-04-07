@@ -1,7 +1,7 @@
 export type GameProvider = {
   id: number;
-  provider_code: string;
-  provider_name: string;
+  code: string;
+  name: string;
   is_active: number;
   order: number;
   status: number;

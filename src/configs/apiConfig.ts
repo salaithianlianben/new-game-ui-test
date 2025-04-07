@@ -1,6 +1,6 @@
 export const ApiConfig = {
-  baseUrl: "",
-  gameType: "gameType",
+  baseUrl: import.meta.env.VITE_PUBLIC_API_URL,
+  gameType: "game_types",
   paymentProvider: "agentPaymentType",
   user: "user",
   gameProduct: "gameTypeProducts",
