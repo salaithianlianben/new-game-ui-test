@@ -33,10 +33,10 @@ const AuthGuard = ({ children }: AuthProviderProps) => {
           <div className="h-full w-full">{children}</div>
         </main>
       ) : (
-        <main className="bg-background text-white grid min-h-screen w-full lg:grid-cols-[20%_1fr]">
-          <SideBar className="h-screen sticky top-0" />
-          <div className="flex flex-col h-screen">
-            <TopNav className="sticky top-0 z-10" />
+        <main className=" bg-background w-screen text-white flex min-h-screen ">
+          <SideBar className="h-screen sticky top-0 lg:w-1/5" />
+          <div className="w-full min-h-full lg:w-4/5 flex flex-col ">
+          <TopNav className="sticky top-0 z-10" />
             <div className="flex-1 overflow-y-auto w-full h-full">
               {children}
             </div>
