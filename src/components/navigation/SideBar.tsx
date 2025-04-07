@@ -1,4 +1,3 @@
-
 import { useQuery } from "@tanstack/react-query";
 import { GiftIcon, HomeIcon, UserIcon } from "lucide-react";
 import { ReactNode } from "react";
@@ -25,9 +24,9 @@ const SideBar = ({ className }: SideMenuProps) => {
   const { language } = useLanguage();
 
   const isHomeActive =
-  location.pathname === "/" ||
-  location.pathname.startsWith("/hot-games") ||
-  location.pathname.startsWith("/game-type");
+    location.pathname === "/" ||
+    location.pathname.startsWith("/hot-games") ||
+    location.pathname.startsWith("/game-type");
 
   const { data: contact, isLoading: isLoadingContact } = useQuery({
     queryKey: ["GET_CONTACT_INFO"],
@@ -63,10 +62,7 @@ const SideBar = ({ className }: SideMenuProps) => {
     >
       <div className="flex flex-col gap-2 justify-between h-full">
         <div className="flex h-[60px] items-center px-6">
-          <Link
-            to="/"
-            className="flex items-center gap-2 font-semibold"
-          >
+          <Link to="/" className="flex items-center gap-2 font-semibold">
             <span className="">Super Bonus</span>
           </Link>
         </div>
@@ -77,7 +73,9 @@ const SideBar = ({ className }: SideMenuProps) => {
           <nav className="grid items-start px-4 text-sm font-medium space-y-2">
             {sideMenuItems.map((item, idx) => {
               const isActive =
-                item.path === "/" ? isHomeActive : location.pathname === item.path;
+                item.path === "/"
+                  ? isHomeActive
+                  : location.pathname === item.path;
               return (
                 <Link
                   key={idx}
@@ -109,19 +107,19 @@ const SideBar = ({ className }: SideMenuProps) => {
                   {c.name === "Facebook" && (
                     <img
                       src={"/icons/facebook.png"}
-                      className="h-8 w-8 rounded-full"
+                      className="h-10 w-10 rounded-full"
                     />
                   )}
                   {c.name === "Viber" && (
                     <img
                       src={"/icons/viber.png"}
-                      className="h-8 w-8 rounded-full"
+                      className="h-10 w-10 rounded-full"
                     />
                   )}
                   {c.name === "Telegram" && (
                     <img
                       src={"/icons/telegram.png"}
-                      className="h-8 w-8 rounded-full"
+                      className="h-10 w-10 rounded-full"
                     />
                   )}
                 </a>

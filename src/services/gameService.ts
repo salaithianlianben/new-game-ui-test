@@ -81,17 +81,18 @@ const fetchHotGames = async () => {
   }
 };
 
-const fetchGameUrl = async (code: string) => {
+const fetchGameUrl = async (game: Game) => {
   try {
     const { data } = await apiService.post(
-      `${ApiConfig.baseUrl}/${ApiConfig.getGameInfo}`,
+      `${ApiConfig.baseUrl}/${ApiConfig.launchGame}`,
       {
-        game_code: code,
+        provider_id: game.provider_code,
+        game_id: game.id,
+        type_id: game.type_id,
       }
     );
     return {
-      url: get(data.message, "url", "") as string,
-      ticket: get(data.message, "ticket", "") as string,
+      Url: get(data, "Url", "") as string,
     };
   } catch (error) {
     console.error(error);

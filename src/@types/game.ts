@@ -1,7 +1,10 @@
 export type Game = {
   id: number;
-  image_url: string;
+  img: string;
   game_id: number;
-  game_name: string;
-  game_code: string;
+  name: string;
+  code: string;
+  provider_id: number;
+  provider_code: string;
+  type_id: number;
 };

@@ -12,6 +12,7 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { Game } from "../../@types/game";
 
 const GameTypeView = () => {
   const [sliderRef] = useKeenSlider({
@@ -48,10 +49,10 @@ const GameTypeView = () => {
     enabled: !!id,
   });
 
-  const { mutate: getGameUrl } = useMutation({
+  const { mutateAsync: getGameUrl } = useMutation({
     mutationFn: fetchGameUrl,
     onSuccess: (data) => {
-      window.open(data.url);
+      window.open(data.Url);
     },
     onError: (error) => {
       toast(error.message, {
@@ -69,11 +70,11 @@ const GameTypeView = () => {
 
   const filterData =
     data?.filter((g) =>
-      g.game_name.toLowerCase().includes(searchValue.toLowerCase())
+      g.name.toLowerCase().includes(searchValue.toLowerCase())
     ) ?? [];
 
-  const handleStartPlay = (code: string) => {
-    getGameUrl(code);
+  const handleStartPlay = async (game: Game) => {
+    await getGameUrl(game);
   };
 
   useEffect(() => {
@@ -108,7 +109,7 @@ const GameTypeView = () => {
                       : "bg-transparent hover:bg-secondary"
                   }`}
                 >
-                  <span>{p.provider_name}</span>
+                  <span>{p.name}</span>
                 </button>
               ))}
             </div>
@@ -123,13 +124,13 @@ const GameTypeView = () => {
               <button
                 key={idx}
                 className="h-[150px] w-full rounded-md hover:shadow-lg space-y-2"
-                onClick={() => handleStartPlay(game.game_code)}
+                onClick={() => handleStartPlay(game)}
               >
                 <img
-                  src={game.image_url}
+                  src={game.img}
                   className="h-[90%] w-full object-cover rounded-md"
                 />
-                <span className="line-clamp-1 text-xs">{game.game_name}</span>
+                <span className="line-clamp-1 text-xs">{game.name}</span>
               </button>
             ))
           ) : (
