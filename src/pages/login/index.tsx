@@ -164,7 +164,7 @@ const LoginPage = () => {
               alt="Right Pattern"
             />
           </div>
-          <div className="text-center bg-secondary py-10">
+          <div className="text-center bg-secondary py-5">
             <Button
               onClick={() => router("/register")}
               className="px-12 border bg-black hover:bg-white border-white text-white hover:text-black font-bold rounded-full"
