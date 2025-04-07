@@ -83,12 +83,12 @@ const HomePage = () => {
                           <div>
                             <img
                               src={gp.imgUrl}
-                              alt={gp.provider_name}
+                              alt={gp.name}
                               className="object-contain w-full h-[100px] md:h-[200px] rounded-md"
                             />
                           </div>
                           <p className="text-xs text-center font-bold">
-                            {gp.provider_name}
+                            {gp.name}
                           </p>
                         </CarouselItem>
                       ))}
