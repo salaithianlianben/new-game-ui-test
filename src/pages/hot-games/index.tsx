@@ -1,3 +1,4 @@
+import { Game } from "../../@types/game";
 import GameListSkeleton from "../../components/GameListSkeleton";
 import TabsLayout from "../../components/layout/TabsLayout";
 import { fetchGameUrl, fetchHotGames } from "../../services/gameService";
@@ -13,10 +14,10 @@ const HotGamesView = () => {
     queryFn: fetchHotGames,
   });
 
-  const { mutate: getGameUrl } = useMutation({
+  const { mutateAsync: getGameUrl } = useMutation({
     mutationFn: fetchGameUrl,
     onSuccess: (data) => {
-      window.open(data.url);
+      window.open(data.Url);
     },
     onError: (error) => {
       toast(error.message, {
@@ -29,11 +30,11 @@ const HotGamesView = () => {
 
   const filterData =
     data?.filter((g) =>
-      g.game_name.toLowerCase().includes(searchValue.toLowerCase())
+      g.name.toLowerCase().includes(searchValue.toLowerCase())
     ) ?? [];
 
-  const handleStartPlay = (code: string) => {
-    getGameUrl(code);
+  const handleStartPlay = async (game: Game) => {
+    await getGameUrl(game);
   };
 
   return (
@@ -50,13 +51,13 @@ const HotGamesView = () => {
               <button
                 key={idx}
                 className="h-[250px] w-full rounded-md hover:shadow-lg"
-                onClick={() => handleStartPlay(game.game_code)}
+                onClick={() => handleStartPlay(game)}
               >
                 <img
-                  src={game.image_url}
+                  src={game.img}
                   className="h-full w-full object-cover rounded-md"
                 />
-                <span>{game.game_name}</span>
+                <span>{game.name}</span>
               </button>
             ))
           ) : (
