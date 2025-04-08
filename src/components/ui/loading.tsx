@@ -8,10 +8,10 @@ interface LoadingProps {
 
 const Loading = ({ children, loading }: LoadingProps) => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex min-h-screen w-full items-center justify-center">
       {loading ? (
-        <div className="flex flex-col items-center">
-          <LucideLoader2 className="h-4 w-5 animate-spin" />
+        <div className="flex flex-col items-center justify-center">
+          <LucideLoader2 className="h-8 w-8 animate-spin text-active" />
         </div>
       ) : (
         children
