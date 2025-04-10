@@ -34,18 +34,19 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   useEffect(() => {
     const fetchUser = async () => {
       setIsLoading(true);
-      
+
       // First check if token exists in localStorage
       const token = localStorage.getItem("token");
-      
+
       if (!token) {
         // If no token exists, no need to call API
         setUser(null);
         setIsLoading(false);
-        // router("/login");
+        logout();
+        router("/login");
         return;
       }
-      
+
       try {
         const savedUser = await getMe();
         if (savedUser) {
@@ -76,7 +77,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   }) => {
     setIsLoading(true);
     try {
-      const { user: authUser, token } = await apiSignIn({ user_name, password });
+      const { user: authUser, token } = await apiSignIn({
+        user_name,
+        password,
+      });
       localStorage.setItem("token", token);
       setUser(authUser);
       router("/dashboard"); // Or wherever you want to redirect after login
