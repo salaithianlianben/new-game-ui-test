@@ -87,7 +87,7 @@ const fetchGameUrl = async (game: Game) => {
       `${ApiConfig.baseUrl}/${ApiConfig.launchGame}`,
       {
         provider_id: game.provider_code,
-        game_id: game.id,
+        game_id: game.code,
         type_id: game.type_id,
       }
     );
