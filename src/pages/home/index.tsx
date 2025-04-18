@@ -94,7 +94,7 @@ const HomePage = () => {
             >
               <img
                 src={"/images/ponewine.jpg"}
-                alt={"Shan"}
+                alt={"Shan Game"}
                 className="object-contain w-full h-[100px] md:h-[200px] rounded-lg"
               />
             </div>
