@@ -3,8 +3,8 @@ import {
   fetchGameProductsByGameType,
   fetchGameUrl,
 } from "../../services/gameService";
-import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import TopTabSkeleton from "./components/TopTabSkeleton";
 import TabsLayout from "../../components/layout/TabsLayout";
 import GameListSkeleton from "../../components/GameListSkeleton";
