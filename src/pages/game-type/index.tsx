@@ -135,7 +135,7 @@ const GameTypeView = () => {
             ))
           ) : (
             <p className="text-center text-gray-500 col-span-full">
-              No games available
+               No games available
             </p>
           )}
         </div>
