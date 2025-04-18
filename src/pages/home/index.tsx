@@ -13,6 +13,7 @@ import {
   CarouselPrevious,
 } from "../../components/ui/carousel";
 import { useNavigate } from "react-router-dom";
+import { getMe } from "../../services/userService";
 
 const HomePage = () => {
   const router = useNavigate();
@@ -20,6 +21,11 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [gameProducts, setGameProducts] = useState<GameProduct[]>([]);
   const [searchValue, setSearchValue] = useState("");
+
+  const { data: user } = useQuery({
+    queryKey: ["ME"],
+    queryFn: getMe,
+  });
 
   const { data: game_types, isLoading: isLoadingGameTypes } = useQuery({
     queryKey: ["GET_GAME_TYPES"],
@@ -32,6 +38,18 @@ const HomePage = () => {
       product.name?.toLowerCase().includes(searchValue.toLowerCase())
     ),
   }));
+
+  const handleClickGame = (v: "shan" | "ponewine") => {
+    let url = undefined;
+    if (v === "ponewine") {
+      url = "https://goldendragon7.pro/";
+    } else {
+      if (v === "shan") {
+        url = "https://ponewine20x.netlify.app/";
+      }
+    }
+    window.open(`${url}?user_name=${user?.user_name}&balance=${user?.balance}`);
+  };
 
   useEffect(() => {
     const fetchGameProducts = async () => {
@@ -52,6 +70,37 @@ const HomePage = () => {
       onChangeInput={(v) => setSearchValue(v)}
     >
       <div className="space-y-5 px-5 pb-10">
+        <div className="space-y-3">
+          <div className="inline-flex flex-row space-x-3 bg-black w-auto">
+            <div className="bg-active w-[5px]" />
+            <div className="p-1 pr-3">
+              <span>Burmese Games</span>
+            </div>
+          </div>
+          <div className="flex flex-row space-x-4">
+            <div
+              className="cursor-pointer"
+              onClick={() => handleClickGame("shan")}
+            >
+              <img
+                src={"/images/shan.jpg"}
+                alt={"Shan"}
+                className="object-contain w-full h-[100px] md:h-[200px] rounded-lg"
+              />
+            </div>
+            <div
+              className="cursor-pointer"
+              onClick={() => handleClickGame("ponewine")}
+            >
+              <img
+                src={"/images/ponewine.jpg"}
+                alt={"Shan"}
+                className="object-contain w-full h-[100px] md:h-[200px] rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+
         {isLoading || isLoadingGameTypes ? (
           <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full">
             <GameListSkeleton />
@@ -84,12 +133,12 @@ const HomePage = () => {
                             <img
                               src={gp.imgUrl}
                               alt={gp.name}
-                              className="object-contain w-full h-[100px] md:h-[200px] rounded-md"
+                              className="object-contain w-full h-[100px] md:h-[200px] rounded-lg"
                             />
                           </div>
                           <p className="text-xs text-center font-bold">
                             {gp.name}
-                           </p>
+                          </p>
                         </CarouselItem>
                       ))}
                     </CarouselContent>
