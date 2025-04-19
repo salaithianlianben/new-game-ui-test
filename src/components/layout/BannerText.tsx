@@ -7,6 +7,7 @@ const BannerText = () => {
     queryKey: ["BANNER_TEXT"],
     queryFn: fetchBannerText,
   });
+  
   return data.length > 0 ? (
     <div className="overflow-x-hidden w-full bg-secondary">
       <div className="py-3 animate-marquee whitespace-nowrap">
