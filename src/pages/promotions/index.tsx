@@ -19,7 +19,7 @@ const PromotionView = () => {
           <Skeleton className="w-full h-30 bg-secondary" />
           <Skeleton className="w-full h-30 bg-secondary" />
         </div>
-      ) : data ? (
+      ) : data && data.promotions.length > 0 ? (
         data.promotions.map((p, idx) => (
           <div key={idx} className="w-full h-[300px]">
             <img src={p.img} className="h-full w-full object-cover" />
