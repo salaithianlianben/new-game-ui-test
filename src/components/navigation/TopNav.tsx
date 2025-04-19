@@ -145,19 +145,22 @@ const TopNav = ({ className }: TopNavProps) => {
                   const isActive =
                     item.path === "/" ? isHomeActive : location.pathname === item.path;
                   return (
-                    <a
+                    <div
                       key={idx}
-                      href={item.path}
+                      // href={item.path}
                       className={`flex items-center gap-3 rounded px-3 py-2 ${
                         isActive
                           ? "bg-secondary text-active"
                           : "text-gray hover:text-active hover:bg-secondary"
                       }`}
-                      onClick={() => setIsSheetOpen(false)} // Close the sheet on click
+                      onClick={() => {
+                        router(item.path);
+                        setIsSheetOpen(false);
+                      }} // Close the sheet on click
                     >
                       {item.icon}
                       {item.label}
-                    </a>
+                    </div>
                   );
                 })}
               </nav>
