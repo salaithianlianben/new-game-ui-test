@@ -126,7 +126,7 @@ const TopNav = ({ className }: TopNavProps) => {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="w-full sm:max-w-xs">
+        <SheetContent side="left" className="w-[4/5] sm:max-w-xs">
           <div className="flex flex-col gap-2 justify-between h-full">
             <div className="flex h-[60px] items-center px-6">
               <a
