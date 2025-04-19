@@ -37,7 +37,7 @@ const AuthGuard = ({ children }: AuthProviderProps) => {
           <SideBar className="h-screen sticky top-0 lg:w-1/5" />
           <div className="w-full min-h-full lg:w-4/5 flex flex-col ">
           <TopNav className="sticky top-0 z-10" />
-            <div className="flex-1 overflow-y-auto w-full h-full">
+            <div className="flex-1 no-scrollbar overflow-y-auto w-full h-full">
               {children}
             </div>
           </div>
