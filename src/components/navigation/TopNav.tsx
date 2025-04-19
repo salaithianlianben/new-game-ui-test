@@ -19,7 +19,7 @@ import {
 import { useLanguage } from "../../context/LanguageContext";
 import { Language } from "../../@types/language";
 import { useQuery } from "@tanstack/react-query";
-import { fetchContractInformation } from "../../services/contactService";
+// import { fetchContractInformation } from "../../services/contactService";
 import { translations } from "../../configs/translations";
 import { RiAdvertisementLine } from "react-icons/ri";
 import { Skeleton } from "../ui/skeleton";
@@ -27,6 +27,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { useState } from "react";
 import UserInfo from "./UserInfo";
 import { useLocation, useNavigate } from "react-router-dom";
+import { fetchBanners } from "../../services/bannerService";
 
 interface SideMenuItem {
   label: string;
@@ -80,9 +81,14 @@ const TopNav = ({ className }: TopNavProps) => {
   location.pathname.startsWith("/hot-games") ||
   location.pathname.startsWith("/game-type");
 
-  const { data: contact, isLoading: isLoadingContact } = useQuery({
-    queryKey: ["GET_CONTACT_INFO"],
-    queryFn: fetchContractInformation,
+  // const { data: contact, isLoading: isLoadingContact } = useQuery({
+  //   queryKey: ["GET_CONTACT_INFO"],
+  //   queryFn: fetchContractInformation,
+  // });
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["GET_BANNERS"],
+    queryFn: fetchBanners,
   });
 
   const sideMenuItems = [
@@ -166,7 +172,7 @@ const TopNav = ({ className }: TopNavProps) => {
               </nav>
             </div>
             <div className="mb-7">
-              {isLoadingContact ? (
+              {isLoading ? (
                 <div className="flex flex-row items-center justify-center w-full space-x-4">
                   <Skeleton className="h-7 w-7 rounded-md bg-secondary" />
                   <Skeleton className="h-7 w-7 rounded-md bg-secondary" />
@@ -174,7 +180,7 @@ const TopNav = ({ className }: TopNavProps) => {
                 </div>
               ) : (
                 <div className="flex flex-row items-center justify-center w-full space-x-4">
-                  {contact?.map((c, idx) => (
+                  {data?.contacts?.map((c, idx) => (
                     <a key={idx} href={c.value} target="_blank">
                       {c.name === "Facebook" && (
                         <img

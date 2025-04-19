@@ -1,3 +1,6 @@
+import { Contact } from "./contact";
+import { Promotion } from "./promotion";
+
 export type Banner = {
   id: number;
   image: string;
@@ -7,10 +10,15 @@ export type Banner = {
   img_url: string;
 };
 
-export interface BannerText {
-  id: number;
-  text: string;
-  admin_id: number;
-  created_at: string;
-  updated_at: string;
+export interface Banners {
+  banners: { img: string }[],
+  banner_text: {
+    text: string
+  },
+  ads_banner: {
+    img: string
+  },
+  rewards: string[],
+  promotions: Promotion[],
+  contacts: Contact[]
 }

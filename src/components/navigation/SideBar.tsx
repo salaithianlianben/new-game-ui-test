@@ -8,6 +8,7 @@ import { fetchContractInformation } from "../../services/contactService";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../configs/translations";
+import { fetchBanners } from "../../services/bannerService";
 
 interface SideMenuItem {
   label: string;
@@ -28,9 +29,14 @@ const SideBar = ({ className }: SideMenuProps) => {
     location.pathname.startsWith("/hot-games") ||
     location.pathname.startsWith("/game-type");
 
-  const { data: contact, isLoading: isLoadingContact } = useQuery({
-    queryKey: ["GET_CONTACT_INFO"],
-    queryFn: fetchContractInformation,
+  // const { data: contact, isLoading: isLoadingContact } = useQuery({
+  //   queryKey: ["GET_CONTACT_INFO"],
+  //   queryFn: fetchContractInformation,
+  // });
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["GET_BANNERS"],
+    queryFn: fetchBanners,
   });
 
   const sideMenuItems = [
@@ -94,7 +100,7 @@ const SideBar = ({ className }: SideMenuProps) => {
           </nav>
         </div>
         <div className="mb-7">
-          {isLoadingContact ? (
+          {isLoading ? (
             <div className="flex flex-row items-center justify-center w-full space-x-4">
               <Skeleton className="h-7 w-7 rounded-md bg-secondary" />
               <Skeleton className="h-7 w-7 rounded-md bg-secondary" />
@@ -102,7 +108,7 @@ const SideBar = ({ className }: SideMenuProps) => {
             </div>
           ) : (
             <div className="flex flex-row items-center justify-center w-full space-x-4">
-              {contact?.map((c, idx) => (
+              {data?.contacts?.map((c, idx) => (
                 <a key={idx} href={c.value} target="_blank">
                   {c.name === "Facebook" && (
                     <img

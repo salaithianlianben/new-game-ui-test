@@ -1,11 +1,12 @@
 import { Skeleton } from "../../components/ui/skeleton";
+import { fetchBanners } from "../../services/bannerService";
 import { fetchPromotions } from "../../services/promotionService";
 import { useQuery } from "@tanstack/react-query";
 
 const PromotionView = () => {
-  const { data = [], isLoading } = useQuery({
-    queryKey: ["GET_PROMOTIONS"],
-    queryFn: fetchPromotions,
+  const { data, isLoading } = useQuery({
+    queryKey: ["GET_BANNERS"],
+    queryFn: fetchBanners,
   });
 
   return (
@@ -18,10 +19,10 @@ const PromotionView = () => {
           <Skeleton className="w-full h-30 bg-secondary" />
           <Skeleton className="w-full h-30 bg-secondary" />
         </div>
-      ) : data.length > 0 ? (
-        data.map((p, idx) => (
+      ) : data ? (
+        data.promotions.map((p, idx) => (
           <div key={idx} className="w-full h-[300px]">
-            <img src={p.img_url} className="h-full w-full object-cover" />
+            <img src={p.img} className="h-full w-full object-cover" />
           </div>
         ))
       ) : (

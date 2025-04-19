@@ -19,7 +19,7 @@ export const ApiConfig = {
   changePassword: "change-password",
   videoAds: "videoads",
   contact: "contact",
-  banner: "banner",
+  banner: "home",
   bannerText: "banner_Text",
   bet: "bet",
   launchGame: "launch_game",

@@ -1,21 +1,21 @@
 
 import { useQuery } from "@tanstack/react-query";
-import { fetchBannerText } from "../../services/bannerService";
+import { fetchBanners } from "../../services/bannerService";
 
 const BannerText = () => {
-  const { data = [] } = useQuery({
-    queryKey: ["BANNER_TEXT"],
-    queryFn: fetchBannerText,
+  const { data } = useQuery({
+    queryKey: ["GET_BANNERS"],
+    queryFn: fetchBanners,
   });
   
-  return data.length > 0 ? (
+  return data ? (
     <div className="overflow-x-hidden w-full bg-secondary">
       <div className="py-3 animate-marquee whitespace-nowrap">
-        {data.map((d, idx) => (
-          <span className="" key={idx}>
-            {d.text}
+        {/* {data.banner_text.map((d, idx) => ( */}
+          <span>
+            {data.banner_text.text}
           </span>
-        ))}
+        {/* ))} */}
       </div>
     </div>
   ) : null;

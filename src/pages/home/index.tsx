@@ -42,10 +42,10 @@ const HomePage = () => {
   const handleClickGame = (v: "shan" | "ponewine") => {
     let url = undefined;
     if (v === "ponewine") {
-      url = "https://goldendragon7.pro/";
+      url = "https://ponewine20x.netlify.app/"
     } else {
       if (v === "shan") {
-        url = "https://ponewine20x.netlify.app/";
+        url = "https://goldendragon7.pro/";
       }
     }
     window.open(`${url}?user_name=${user?.user_name}&balance=${user?.balance}`);
