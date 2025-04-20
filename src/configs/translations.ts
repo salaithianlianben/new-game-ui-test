@@ -103,4 +103,10 @@ export const translations: Translations = {
     th: "จำนวนเงิน",
     zh: "金额",
   },
+  contacts: {
+    en: "Contacts",
+    my: "ဆက်သွယ်ရန်",
+    th: "การติดต่อ",
+    zh: "聯絡方式"
+  }
 };

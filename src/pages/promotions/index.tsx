@@ -1,6 +1,5 @@
 import { Skeleton } from "../../components/ui/skeleton";
 import { fetchBanners } from "../../services/bannerService";
-import { fetchPromotions } from "../../services/promotionService";
 import { useQuery } from "@tanstack/react-query";
 
 const PromotionView = () => {

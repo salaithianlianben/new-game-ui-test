@@ -6,6 +6,7 @@ import LoginPage from "../pages/login";
 import ProfileView from "../pages/profile";
 import PromotionView from "../pages/promotions";
 import RegisterPage from "../pages/register";
+import Contact from "../pages/contacts";
 import VideoAds from "../pages/video-ads";
 import HotGamesView from "../pages/hot-games";
 import GameTypeView from "../pages/game-type";
@@ -59,6 +60,10 @@ const routers = createBrowserRouter([
         path: "video-ads",
         element: <VideoAds />,
       },
+      {
+        path: "contacts",
+        element: <Contact />
+      }
     ],
   },
   {

@@ -1,14 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import { GiftIcon, HomeIcon, UserIcon } from "lucide-react";
+// import { useQuery } from "@tanstack/react-query";
+import { ContactIcon, GiftIcon, HomeIcon, UserIcon } from "lucide-react";
 import { ReactNode } from "react";
 import { RiAdvertisementLine } from "react-icons/ri";
-import { Skeleton } from "../ui/skeleton";
+// import { Skeleton } from "../ui/skeleton";
 import UserInfo from "./UserInfo";
-import { fetchContractInformation } from "../../services/contactService";
+// import { fetchContractInformation } from "../../services/contactService";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../configs/translations";
-import { fetchBanners } from "../../services/bannerService";
+// import { fetchBanners } from "../../services/bannerService";
 
 interface SideMenuItem {
   label: string;
@@ -28,16 +28,6 @@ const SideBar = ({ className }: SideMenuProps) => {
     location.pathname === "/" ||
     location.pathname.startsWith("/hot-games") ||
     location.pathname.startsWith("/game-type");
-
-  // const { data: contact, isLoading: isLoadingContact } = useQuery({
-  //   queryKey: ["GET_CONTACT_INFO"],
-  //   queryFn: fetchContractInformation,
-  // });
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["GET_BANNERS"],
-    queryFn: fetchBanners,
-  });
 
   const sideMenuItems = [
     {
@@ -60,6 +50,11 @@ const SideBar = ({ className }: SideMenuProps) => {
       path: "/profile",
       icon: <UserIcon className="h-5 w-5" />,
     },
+    {
+      label: translations.contacts[language],
+      path: "/contacts",
+      icon: <ContactIcon className="h-5 w-5"/>
+    }
   ] as SideMenuItem[];
 
   return (
@@ -99,7 +94,7 @@ const SideBar = ({ className }: SideMenuProps) => {
             })}
           </nav>
         </div>
-        <div className="mb-7">
+        {/* <div className="mb-7">
           {isLoading ? (
             <div className="flex flex-row items-center justify-center w-full space-x-4">
               <Skeleton className="h-7 w-7 rounded-md bg-secondary" />
@@ -132,7 +127,7 @@ const SideBar = ({ className }: SideMenuProps) => {
               ))}
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );
