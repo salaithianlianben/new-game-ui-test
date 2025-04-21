@@ -14,7 +14,7 @@ const Banners = () => {
     queryFn: fetchBanners,
   });
 
-  return data ? (
+  return data && data.banners.length > 0 ? (
     <div className="w-full relative">
       <Carousel opts={{ loop: true }} className="relative w-full">
         <CarouselContent>

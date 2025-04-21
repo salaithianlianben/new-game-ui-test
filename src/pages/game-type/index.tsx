@@ -109,7 +109,7 @@ const GameTypeView = () => {
                       : "bg-transparent hover:bg-secondary"
                   }`}
                 >
-                  <span>{p.name}</span>
+                  <span>{`${p.name}`}</span>
                 </button>
               ))}
             </div>

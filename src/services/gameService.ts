@@ -14,7 +14,7 @@ const fetchAllGamesByProviderAndType = async ({
 }) => {
   try {
     const { data } = await apiService.get(
-      `${ApiConfig.baseUrl}/${ApiConfig.gameList}/${provider_id}/${game_type_id}`
+      `${ApiConfig.baseUrl}/${ApiConfig.gameList}/${game_type_id}/${provider_id}`
     );
 
     return data.data as Game[];
