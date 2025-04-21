@@ -8,7 +8,7 @@ const BannerText = () => {
     queryFn: fetchBanners,
   });
   
-  return data ? (
+  return data && data.banner_text ? (
     <div className="overflow-x-hidden w-full bg-secondary">
       <div className="py-3 animate-marquee whitespace-nowrap">
         {/* {data.banner_text.map((d, idx) => ( */}
