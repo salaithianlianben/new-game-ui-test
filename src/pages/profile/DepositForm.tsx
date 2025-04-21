@@ -54,16 +54,16 @@ const formSchema = z.object({
   reference_no: z.string().regex(/^\d{6}$/, {
     message: "Reference number must be exactly 6 digits (numbers only)!",
   }),
-  payment_slip: z
-    .instanceof(File)
-    .refine((file) => file.size > 0, { message: "Payment slip is required" })
-    .refine((file) => file.size <= 5 * 1024 * 1024, {
-      message: "File size must be less than 5MB",
-    })
-    .refine(
-      (file) => ["image/jpeg", "image/png", "image/gif"].includes(file.type),
-      { message: "Only JPEG, PNG, and GIF files are allowed" }
-    ),
+  // payment_slip: z
+  //   .instanceof(File)
+  //   .refine((file) => file.size > 0, { message: "Payment slip is required" })
+  //   .refine((file) => file.size <= 5 * 1024 * 1024, {
+  //     message: "File size must be less than 5MB",
+  //   })
+  //   .refine(
+  //     (file) => ["image/jpeg", "image/png", "image/gif"].includes(file.type),
+  //     { message: "Only JPEG, PNG, and GIF files are allowed" }
+  //   ),
 });
 
 const DepositForm = ({ onDialogClose, onRefresh }: DepositFormProps) => {
@@ -78,7 +78,7 @@ const DepositForm = ({ onDialogClose, onRefresh }: DepositFormProps) => {
       agent_payment_type_id: "",
       amount: "",
       reference_no: "",
-      payment_slip: undefined,
+      // payment_slip: undefined,
     },
   });
 
@@ -107,40 +107,44 @@ const DepositForm = ({ onDialogClose, onRefresh }: DepositFormProps) => {
     },
   });
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      // Set form value
-      form.setValue("payment_slip", file);
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (file) {
+  //     // Set form value
+  //     form.setValue("payment_slip", file);
 
-      // Create preview
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewImage(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  //     // Create preview
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setPreviewImage(reader.result as string);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
-  const removePreview = () => {
-    setPreviewImage(null);
-    form.setValue("payment_slip", undefined as never, {
-      shouldValidate: true,
-    });
-    // Reset file input
-    if (document.getElementById("payment_slip")) {
-      (document.getElementById("payment_slip") as HTMLInputElement).value = "";
-    }
-  };
+  // const removePreview = () => {
+  //   setPreviewImage(null);
+  //   form.setValue("payment_slip", undefined as never, {
+  //     shouldValidate: true,
+  //   });
+  //   // Reset file input
+  //   if (document.getElementById("payment_slip")) {
+  //     (document.getElementById("payment_slip") as HTMLInputElement).value = "";
+  //   }
+  // };
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    const formData = new FormData();
-    formData.append("agent_payment_type_id", values.agent_payment_type_id);
-    formData.append("amount", values.amount);
-    formData.append("refrence_no", values.reference_no);
-    formData.append("image", values.payment_slip);
+    // const formData = new FormData();
+    // formData.append("agent_payment_type_id", values.agent_payment_type_id);
+    // formData.append("amount", values.amount);
+    // formData.append("refrence_no", values.reference_no);
+    // formData.append("image", values.payment_slip);
 
-    doPayment(formData);
+    doPayment({
+      agent_payment_type_id: parseInt(values.agent_payment_type_id),
+      amount: +values.amount,
+      reference_number: values.reference_no,
+    });
   };
 
   return (
@@ -305,7 +309,7 @@ const DepositForm = ({ onDialogClose, onRefresh }: DepositFormProps) => {
           )}
         />
 
-        <FormItem>
+        {/* <FormItem>
           <FormLabel>Payment Slip</FormLabel>
           <FormControl>
             <div className="flex flex-col space-y-2">
@@ -351,7 +355,7 @@ const DepositForm = ({ onDialogClose, onRefresh }: DepositFormProps) => {
           <FormMessage>
             {form.formState.errors?.payment_slip?.message}
           </FormMessage>
-        </FormItem>
+        </FormItem> */}
 
         <div className="flex flex-row justify-end items-center space-x-3">
           <Button
