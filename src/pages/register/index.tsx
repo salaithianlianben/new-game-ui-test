@@ -93,8 +93,8 @@ const RegisterPage = () => {
        <div className={`${errors ? '' :'h-[80vh] flex items-center justify-center'} w-full  `}>
        <div className="min-h-[60vh] flex flex-col items-center justify-center">
           <img
-            className={`${errors ? '' :'my-5'} lg:hidden w-[100px] h-[100px]`}
-            src={"/images/logo.png"}
+            className={`${errors ? '' :'my-5'} lg:hidden w-[100px] h-[100px] rounded-lg`}
+            src={"/images/logo.jpg"}
             alt="Logo"
           />
           <h1 className={`mt-10 mb-4  hidden bg-gradient-to-r from-[#b2ff54] via-[#57b400] to-[#87600c] bg-clip-text py-[10px] text-4xl font-black uppercase text-transparent lg:block`}>
@@ -270,7 +270,13 @@ const RegisterPage = () => {
           </div>
         </div>
       </div>
-      <div className="hidden lg:inline-block bg-[url('/images/authBg.png')] w-full h-full bg-cover bg-center bg-no-repeat"></div>
+      {/* <div className="hidden lg:inline-block bg-[url('/images/ponewine.jpg')] w-full h-full bg-cover bg-center bg-no-repeat"></div> */}
+      <div className="hidden lg:flex w-full h-full justify-center items-center bg-gradient-to-r from-[#87600c] via-[#57b400] to-[#b2ff54]  ">
+        <img
+          src="/images/ponewine.jpg"
+          className="h-[200px] w-[200px] object-contain rounded-lg"
+        />
+      </div>
     </div>
   );
 };

@@ -66,10 +66,9 @@ const LoginPage = () => {
       <div className="w-full relative">
         <div className="min-h-[80vh] flex flex-col items-center justify-center">
           <img
-            className="my-5 lg:hidden h-[120px] w-[120px]"
-            src={"/images/logo.png"}
+            className="my-5 lg:hidden h-[120px] w-[120px] rounded-lg"
+            src={"/images/logo.jpg"}
             alt="Logo"
-            
           />
           <h1 className="my-10 hidden bg-gradient-to-r from-[#b2ff54] via-[#57b400] to-[#87600c] bg-clip-text py-[10px] text-4xl font-black uppercase text-transparent lg:block">
             WELCOME
@@ -174,7 +173,13 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      <div className="hidden lg:inline-block bg-[url('/images/authBg.png')] w-full h-full bg-cover bg-center bg-no-repeat"></div>
+      {/* <div className="hidden lg:inline-block bg-[url('/images/ponewine.jpg')] w-full h-full bg-cover bg-center bg-no-repeat"></div> */}
+      <div className="hidden lg:flex w-full h-full justify-center items-center bg-gradient-to-r from-[#87600c] via-[#57b400] to-[#b2ff54]  ">
+        <img
+          src="/images/ponewine.jpg"
+          className="h-[200px] w-[200px] object-contain rounded-lg"
+        />
+      </div>
     </div>
   );
 };

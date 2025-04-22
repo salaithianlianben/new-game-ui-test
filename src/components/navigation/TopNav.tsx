@@ -78,9 +78,9 @@ const TopNav = ({ className }: TopNavProps) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false); // Control sheet state
 
   const isHomeActive =
-  location.pathname === "/" ||
-  location.pathname.startsWith("/hot-games") ||
-  location.pathname.startsWith("/game-type");
+    location.pathname === "/" ||
+    location.pathname.startsWith("/hot-games") ||
+    location.pathname.startsWith("/game-type");
 
   const sideMenuItems = [
     {
@@ -103,11 +103,11 @@ const TopNav = ({ className }: TopNavProps) => {
       path: "/profile",
       icon: <UserIcon className="h-5 w-5" />,
     },
-    {
-      label: translations.contacts[language],
-      path: "/contacts",
-      icon: <ContactIcon className="h-5 w-5"/>
-    }
+    // {
+    //   label: translations.contacts[language],
+    //   path: "/contacts",
+    //   icon: <ContactIcon className="h-5 w-5" />,
+    // },
   ] as SideMenuItem[];
 
   const onSelectLanguage = (value: Language) => {
@@ -131,11 +131,14 @@ const TopNav = ({ className }: TopNavProps) => {
         <SheetContent side="left" className="w-[4/5] sm:max-w-xs">
           <div className="flex flex-col gap-2 justify-between h-full">
             <div className="flex h-[60px] items-center px-6">
-              <a
-                href="/"
-                className="flex items-center gap-2 font-semibold"
-              >
-                <span className="">Super Bonus</span>
+              <a href="/" className="flex items-center gap-2 font-semibold">
+                <div className="flex flex-row space-x-3 items-center">
+                  <img
+                    src={"/images/logo.jpg"}
+                    className="h-[30px] w-[30px] rounded-full object-contain"
+                  />
+                  <span className="">Pone Wine 20x</span>
+                </div>
               </a>
             </div>
             <div className="p-5">
@@ -145,7 +148,9 @@ const TopNav = ({ className }: TopNavProps) => {
               <nav className="grid items-start px-4 text-sm font-medium space-y-2">
                 {sideMenuItems.map((item, idx) => {
                   const isActive =
-                    item.path === "/" ? isHomeActive : location.pathname === item.path;
+                    item.path === "/"
+                      ? isHomeActive
+                      : location.pathname === item.path;
                   return (
                     <div
                       key={idx}
@@ -209,7 +214,10 @@ const TopNav = ({ className }: TopNavProps) => {
       >
         <div>
           {/* <SearchGames /> */}
-          <span>APP LOGO</span>
+          <img
+            src={"/images/logo.jpg"}
+            className="h-[30px] w-[30px] rounded-full object-contain"
+          />
         </div>
         <div className="space-x-4 flex flex-row items-center">
           <div>

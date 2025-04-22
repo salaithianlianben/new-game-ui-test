@@ -50,11 +50,11 @@ const SideBar = ({ className }: SideMenuProps) => {
       path: "/profile",
       icon: <UserIcon className="h-5 w-5" />,
     },
-    {
-      label: translations.contacts[language],
-      path: "/contacts",
-      icon: <ContactIcon className="h-5 w-5"/>
-    }
+    // {
+    //   label: translations.contacts[language],
+    //   path: "/contacts",
+    //   icon: <ContactIcon className="h-5 w-5" />,
+    // },
   ] as SideMenuItem[];
 
   return (
@@ -64,7 +64,13 @@ const SideBar = ({ className }: SideMenuProps) => {
       <div className="flex flex-col gap-2 justify-between h-full">
         <div className="flex h-[60px] items-center px-6">
           <Link to="/" className="flex items-center gap-2 font-semibold">
-            <span className="">Super Bonus</span>
+            <div className="flex flex-row space-x-3 items-center">
+              <img
+                src={"/images/logo.jpg"}
+                className="h-[30px] w-[30px] rounded-full object-contain"
+              />
+              <span className="">Pone Wine 20x</span>
+            </div>
           </Link>
         </div>
         <div className="p-5">
