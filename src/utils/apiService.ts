@@ -15,6 +15,7 @@ const getAuthToken = (): string | null => {
 
 const logout = () => {
   localStorage.removeItem("token");
+  localStorage.removeItem("after_login");
 };
 
 apiService.interceptors.request.use(
