@@ -62,7 +62,7 @@ const RegisterPage = () => {
     mutationFn: signUp,
     onSuccess: ({ user, token }) => {
       localStorage.setItem("token", token);
-      // console.log(user);
+      console.log(user);
       toast("Welcome to the game!", {
         style: {
           background: "bg-active",
