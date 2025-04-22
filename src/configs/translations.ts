@@ -108,5 +108,11 @@ export const translations: Translations = {
     my: "ဆက်သွယ်ရန်",
     th: "การติดต่อ",
     zh: "聯絡方式"
+  },
+  ponewine_report: {
+    en: "Pone Wine Report",
+    my: "ပုံဝိုင်း အစီရင်ခံစာ",
+    th: "Pone Wine Report",
+    zh: "Pone Wine Report"
   }
 };

@@ -8,7 +8,7 @@ import {
   Loader2Icon,
   LockIcon,
   PhoneIcon,
-  UserCogIcon,
+  // UserCogIcon,
   UserIcon,
 } from "lucide-react";
 import { useState, useCallback } from "react";
@@ -32,7 +32,7 @@ const registerSchema = z
     confirm_password: z
       .string()
       .min(6, { message: "Password must be at least 6 characters." }),
-    agentCode: z.string().min(1, { message: "Referral code is required!" }),
+    // agentCode: z.string().min(1, { message: "Referral code is required!" }),
   })
   .refine((data) => data.password === data.confirm_password, {
     message: "Passwords do not match.",
@@ -62,7 +62,7 @@ const RegisterPage = () => {
     mutationFn: signUp,
     onSuccess: ({ user, token }) => {
       localStorage.setItem("token", token);
-      console.log(user);
+      // console.log(user);
       toast("Welcome to the game!", {
         style: {
           background: "bg-active",
@@ -83,7 +83,7 @@ const RegisterPage = () => {
       password: data.password,
       password_confirmation: data.confirm_password,
       phone: data.mobileNumber,
-      referral_code: data.agentCode,
+      referral_code: "ponewine",
     });
   };
 
@@ -206,7 +206,7 @@ const RegisterPage = () => {
             </div>
 
             {/* Agent Code */}
-            <div className="space-y-0.5">
+            {/* <div className="space-y-0.5">
               <div className="w-full px-2 flex items-center gap-1 border-l-2 border-x-active pb-1 border-b-2 border-y-black">
                 <UserCogIcon
                   className="text-active"
@@ -223,7 +223,7 @@ const RegisterPage = () => {
                   {errors.agentCode.message}
                 </p>
               )}
-            </div>
+            </div> */}
 
             {/* Error Message */}
             {error && <p className="text-red-500 text-sm">{error}</p>}

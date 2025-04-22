@@ -23,4 +23,5 @@ export const ApiConfig = {
   bannerText: "banner_Text",
   bet: "bet",
   launchGame: "launch_game",
+  ponewine_report: "ponewine-report"
 };

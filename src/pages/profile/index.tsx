@@ -18,6 +18,7 @@ import WithdrawHistoryView from "./WithdrawHistoryView";
 import GameHistoryView from "./GameHistoryView";
 import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../configs/translations";
+import PoneWineReportTable from "./PoneWineReportTable";
 
 const ProfileView = () => {
   const { language } = useLanguage();
@@ -45,6 +46,10 @@ const ProfileView = () => {
       label: translations.gameLogs[language],
       content: <GameHistoryView />,
     },
+    {
+      label: translations.ponewine_report[language],
+      content: <PoneWineReportTable />
+    }
   ];
 
   const onDialogClose = () => setDialogState(undefined);
@@ -99,14 +104,14 @@ const ProfileView = () => {
                       className="w-full sm:w-auto space-x-2 px-4 sm:px-5 border border-active text-active hover:bg-active hover:text-black font-bold"
                     >
                       <PiHandDeposit />
-                      Deposit
+                      {translations.deposit[language]}
                     </Button>
                     <Button
                       onClick={() => setDialogState("withdrawal")}
                       className="w-full sm:w-auto px-4 sm:px-5 border border-active text-active hover:bg-active hover:text-black font-bold"
                     >
                       <PiHandWithdraw />
-                      Withdraw
+                      {translations.withdraw[language]}
                     </Button>
                   </div>
                 </div>
@@ -127,7 +132,7 @@ const ProfileView = () => {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
-              {dialogState === "deposit" ? "Deposit" : "Withdrawal"}
+              {dialogState === "deposit" ? translations.deposit[language] : translations.withdraw[language]}
             </DialogTitle>
           </DialogHeader>
           <div>

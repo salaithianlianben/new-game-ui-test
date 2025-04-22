@@ -69,7 +69,7 @@ const SideBar = ({ className }: SideMenuProps) => {
                 src={"/images/logo.jpg"}
                 className="h-[30px] w-[30px] rounded-full object-contain"
               />
-              <span className="">Pone Wine 20x</span>
+              <span className="">Pone Wine 22x</span>
             </div>
           </Link>
         </div>

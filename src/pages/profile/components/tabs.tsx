@@ -31,7 +31,7 @@ const Tabs: React.FC<TabsProps> = ({
 
   return (
     <div className="space-y-4">
-      <div className="flex gap-4 text-green-400">
+      <div className="flex gap-4 text-green-400 w-full overflow-x-auto scrollbar scrollbar-thin scrollbar-thumb-gray-400">
         {tabs.map((tab, index) => (
           <button
             key={index}

@@ -22,12 +22,14 @@ import { Language } from "../../@types/language";
 // import { useQuery } from "@tanstack/react-query";
 // import { fetchContractInformation } from "../../services/contactService";
 import { translations } from "../../configs/translations";
-import { RiAdvertisementLine } from "react-icons/ri";
+import { RiAddCircleFill, RiAddCircleLine, RiAdvertisementLine } from "react-icons/ri";
 import { Skeleton } from "../ui/skeleton";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { useState } from "react";
 import UserInfo from "./UserInfo";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getMe } from "../../services/userService";
 // import { fetchBanners } from "../../services/bannerService";
 
 interface SideMenuItem {
@@ -114,6 +116,11 @@ const TopNav = ({ className }: TopNavProps) => {
     setLanguage(value);
   };
 
+  const { data: user } = useQuery({
+    queryKey: ["ME"],
+    queryFn: getMe,
+  });
+
   const handleLogout = () => {
     localStorage.clear();
     router("/login");
@@ -137,7 +144,7 @@ const TopNav = ({ className }: TopNavProps) => {
                     src={"/images/logo.jpg"}
                     className="h-[30px] w-[30px] rounded-full object-contain"
                   />
-                  <span className="">Pone Wine 20x</span>
+                  <span className="">Pone Wine 22x</span>
                 </div>
               </a>
             </div>
@@ -219,7 +226,25 @@ const TopNav = ({ className }: TopNavProps) => {
             className="h-[30px] w-[30px] rounded-full object-contain"
           />
         </div>
+
         <div className="space-x-4 flex flex-row items-center">
+          {/* <div>
+            <RiAddCircleLine className="h-7 w-7 text-gray-300"/>
+          </div> */}
+          <div>
+            {user && (
+              <div className="block lg:hidden" onClick={()=> router('/profile')}>
+                <p className="font-bold">{user.name}</p>
+                <div className="flex flex-row space-x-1">
+                  <img
+                    src={"/icons/coin.png"}
+                    className="h-4 w-4 object-contain"
+                  />
+                  <p className="text-sm">{user.balance}</p>
+                </div>
+              </div>
+            )}
+          </div>
           <div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

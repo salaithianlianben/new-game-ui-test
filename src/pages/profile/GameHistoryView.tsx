@@ -54,12 +54,13 @@ const GameHistoryView = () => {
           </button>
         ))}
       </div>
-      <div className="hidden md:block">
+      {/* className="hidden md:block" */}
+      <div >
         <GameHistoryTable data={data} loading={isLoading}/>
       </div>
-      <div className="block md:hidden">
+      {/* <div className="block md:hidden">
         <GameHistoryMobileView data={data} loading={isLoading}/>
-      </div>
+      </div> */}
     </div>
   );
 };

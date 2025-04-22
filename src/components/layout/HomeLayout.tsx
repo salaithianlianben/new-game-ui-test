@@ -6,13 +6,14 @@ import { Dialog, DialogContent } from "../ui/dialog";
 import { fetchBanners } from "../../services/bannerService";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "../ui/button";
+import { CircleDollarSign, Wallet } from "lucide-react";
 
 interface HomeLayoutProps {
   children: React.ReactNode;
 }
 
 const HomeLayout = ({ children }: HomeLayoutProps) => {
-  const [ showDialog, setShowDialog] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
 
   const { data } = useQuery({
     queryKey: ["GET_BANNERS"],
@@ -21,14 +22,14 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
 
   const onCloseDialog = () => {
     setShowDialog(false);
-    localStorage.setItem('after_login', 'TRUE');
-  }
+    localStorage.setItem("after_login", "TRUE");
+  };
 
-  useEffect(()=>{
-    if(localStorage.getItem('after_login') === null){
+  useEffect(() => {
+    if (localStorage.getItem("after_login") === null) {
       setShowDialog(true);
     }
-  },[])
+  }, []);
 
   return (
     <div className="bg-background text-white">
@@ -42,7 +43,12 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
       </div>
       <Dialog open={showDialog} onOpenChange={onCloseDialog}>
         <DialogContent>
-          {data && data.ads_banner && <img src={data.ads_banner.img} className="h-[200px] w-full object-contain" /> }
+          {data && data.ads_banner && (
+            <img
+              src={data.ads_banner.img}
+              className="h-[200px] w-full object-contain"
+            />
+          )}
         </DialogContent>
       </Dialog>
     </div>
