@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import { SearchIcon } from "lucide-react";
 import { fetchGameType } from "../../services/gameTypeServices";
 import { GameType } from "../../@types/gametype";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../configs/translations";
 
 interface TabsLayoutProps {
   children: React.ReactNode;
@@ -12,22 +14,24 @@ interface TabsLayoutProps {
   onChangeInput?: (v: string) => void;
 }
 
-const staticTabs = [
-  {
-    label: "All",
-    route: "/",
-  },
-  {
-    label: "Hot games",
-    route: "/hot-games",
-  },
-];
+
 
 const TabsLayout = ({
   children,
   searchValue = "",
   onChangeInput,
 }: TabsLayoutProps) => {
+  const { language } = useLanguage();
+  const staticTabs = [
+    {
+      label: translations.all[language],
+      route: "/",
+    },
+    {
+      label: translations.hot_games[language],
+      route: "/hot-games",
+    },
+  ];
   const { data  =[], isLoading } = useQuery({
     queryKey: ["GET_GAME_TYPES"],
     queryFn: fetchGameType,

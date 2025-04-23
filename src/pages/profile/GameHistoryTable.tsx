@@ -43,7 +43,7 @@ const GameHistoryTable = ({ data, loading }: GameHistoryTableProps) => {
     },
     {
       header: "Win/Loss Amount",
-      cell: ({ row }) => row.original.total_transaction_amount,
+      cell: ({ row }) => row.original.total_payount_amount,
     },
   ];
   return (

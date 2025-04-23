@@ -14,9 +14,12 @@ import {
 } from "../../components/ui/carousel";
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../../services/userService";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../configs/translations";
 
 const HomePage = () => {
   const router = useNavigate();
+  const { language } = useLanguage();
 
   const [isLoading, setIsLoading] = useState(true);
   const [gameProducts, setGameProducts] = useState<GameProduct[]>([]);
@@ -74,7 +77,7 @@ const HomePage = () => {
           <div className="inline-flex flex-row space-x-3 bg-black w-auto">
             <div className="bg-active w-[5px]" />
             <div className="p-1 pr-3">
-              <span>Burmese Games</span>
+              <span>{translations.burmese_games[language]}</span>
             </div>
           </div>
           <div className="flex flex-row space-x-4">

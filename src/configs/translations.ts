@@ -114,5 +114,23 @@ export const translations: Translations = {
     my: "ပုံဝိုင်း အစီရင်ခံစာ",
     th: "Pone Wine Report",
     zh: "Pone Wine Report"
+  },
+  burmese_games: {
+    en: "Burmese Games",
+    my: "မြန်မာဂိမ်းများ",
+    zh: "緬甸運動會",
+    th: "เกมส์พม่า",
+  },
+  hot_games: {
+    en: "Hot Games",
+    my: "ဟော့ဂိမ်း",
+    th: "เกมร้อนแรง",
+    zh: "熱門遊戲"
+  },
+  all: {
+    en: "All",
+    my: "အားလုံး",
+    th: "ทั้งหมด",
+    zh: "全部"
   }
 };

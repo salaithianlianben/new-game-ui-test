@@ -4,5 +4,5 @@ export type PlayHistory = {
   product: string;
   total_count: number;
   total_bet_amount: string;
-  total_transaction_amount: string;
+  total_payount_amount: string;
 };
