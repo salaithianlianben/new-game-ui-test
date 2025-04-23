@@ -152,9 +152,9 @@ const TopNav = ({ className }: TopNavProps) => {
                 </div>
               </a>
             </div>
-            <div className="p-5">
+            {/* <div className="p-5">
               <UserInfo />
-            </div>
+            </div> */}
             <div className="flex-grow">
               <nav className="grid items-start px-4 text-sm font-medium space-y-2">
                 {sideMenuItems.map((item, idx) => {

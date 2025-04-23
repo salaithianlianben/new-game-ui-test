@@ -13,6 +13,7 @@ import { useKeenSlider } from "keen-slider/react";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Game } from "../../@types/game";
+import { isEmpty } from "lodash";
 
 const GameTypeView = () => {
   const [sliderRef] = useKeenSlider({
@@ -78,7 +79,7 @@ const GameTypeView = () => {
   };
 
   useEffect(() => {
-    if (gameProducts && gameProducts.products.length > 0 && tabValue !== null) {
+    if (gameProducts && gameProducts.products.length > 0 && isEmpty(tabValue)) {
       const firstProviderId = gameProducts.products[0].id;
       setTabValue(firstProviderId);
       router(`/game-type/${id}?provider=${firstProviderId}`);
