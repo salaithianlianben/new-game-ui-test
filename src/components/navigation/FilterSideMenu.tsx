@@ -12,10 +12,13 @@ import { FilterIcon } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { fetchGameType } from "../../services/gameTypeServices";
 import { GameType } from "../../@types/gametype";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../configs/translations";
 
 const FilterSideMenu = () => {
   const router = useNavigate();
   const location = useLocation();
+  const { language } = useLanguage();
   const [activeTab, setActiveTab] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -26,9 +29,14 @@ const FilterSideMenu = () => {
 
   const tabs = [
     {
-      label: "All",
+      label: translations.all[language],
       route: "/",
       id: "all",
+    },
+    {
+      label: translations.hot_games[language],
+      route: "/hot-games",
+      id: "hot-games"
     },
     ...(gameTypes?.map((gameType: GameType) => ({
       label: gameType.name,

@@ -241,9 +241,9 @@ const TopNav = ({ className }: TopNavProps) => {
         </div>
 
         <div className="space-x-4 flex flex-row items-center">
-          {/* <div>
-            <RiAddCircleLine className="h-7 w-7 text-gray-300"/>
-          </div> */}
+          <div className="block lg:hidden">
+            <RiAddCircleLine className="h-8 w-8 text-gray-300" onClick={()=> router('/profile')}/>
+          </div>
           <div>
             {user && (
               <div
