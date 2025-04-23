@@ -1,13 +1,16 @@
 import { Game } from "../../@types/game";
 import GameListSkeleton from "../../components/GameListSkeleton";
 import TabsLayout from "../../components/layout/TabsLayout";
+import { translations } from "../../configs/translations";
 import { fetchGameUrl, fetchHotGames } from "../../services/gameService";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useLanguage } from "../../context/LanguageContext";
 
 const HotGamesView = () => {
   const [searchValue, setSearchValue] = useState("");
+  const { language } = useLanguage();
 
   const { data, isLoading } = useQuery({
     queryKey: ["GET_HOT_GAMES"],
@@ -43,26 +46,26 @@ const HotGamesView = () => {
       onChangeInput={(v) => setSearchValue(v)}
     >
       <div className="px-5">
-        <div className="grid gap-5 gap-y-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full">
+        <div className="grid gap-5 gap-y-8 grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full">
           {isLoading ? (
             <GameListSkeleton />
           ) : filterData.length > 0 ? (
             filterData.map((game, idx) => (
               <button
                 key={idx}
-                className="h-[250px] w-full rounded-md hover:shadow-lg"
+                className="h-[150px] w-full rounded-md hover:shadow-lg"
                 onClick={() => handleStartPlay(game)}
               >
                 <img
                   src={game.img}
-                  className="h-full w-full object-cover rounded-md"
+                  className="h-[90%] w-full object-cover rounded-md"
                 />
-                <span>{game.name}</span>
+                <span className="line-clamp-1 text-xs">{game.name}</span>
               </button>
             ))
           ) : (
             <p className="text-center text-gray-500 col-span-full">
-              No games available
+              {translations.no_game_available[language]}
             </p>
           )}
         </div>

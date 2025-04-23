@@ -138,5 +138,11 @@ export const translations: Translations = {
     my: "ထွက်ရန်",
     zh: "退出",
     th: "การออกจากระบบ"
+  },
+  no_game_available: {
+    en: "No games available",
+    my: "ဂိမ်းများမရရှိနိုင်ပါ။",
+    zh: "沒有可用的遊戲",
+    th: "ไม่มีเกมให้เลือก"
   }
 };

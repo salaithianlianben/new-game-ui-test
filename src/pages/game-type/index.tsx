@@ -14,6 +14,8 @@ import { toast } from "react-hot-toast";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Game } from "../../@types/game";
 import { isEmpty } from "lodash";
+import { translations } from "../../configs/translations";
+import { useLanguage } from "../../context/LanguageContext";
 
 const GameTypeView = () => {
   const [sliderRef] = useKeenSlider({
@@ -22,6 +24,7 @@ const GameTypeView = () => {
     rtl: false,
     slides: { perView: "auto" },
   });
+  const { language } = useLanguage();
   const params = useParams();
   const { id } = params;
   const [searchParams] = useSearchParams();
@@ -136,7 +139,7 @@ const GameTypeView = () => {
             ))
           ) : (
             <p className="text-center text-gray-500 col-span-full">
-               No games available
+               {translations.no_game_available[language]}
             </p>
           )}
         </div>

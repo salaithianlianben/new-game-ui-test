@@ -58,7 +58,7 @@ const TabsLayout = ({
           <div className="flex flex-row space-x-2 items-center border border-input px-5 rounded-full bg-secondary mt-4">
             <SearchIcon className="h-4 w-4" />
             <Input
-              placeholder="Search"
+              placeholder={translations.search[language]}
               className="appearance-none bg-secondary"
               value={searchValue}
               onChange={(e) => onChangeInput?.(e.target.value)}
