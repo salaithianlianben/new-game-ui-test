@@ -139,7 +139,7 @@ const TopNav = ({ className }: TopNavProps) => {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="w-[4/5] sm:max-w-xs">
+        <SheetContent side="left" className="px-0 py-10 cursor-pointer w-[4/5] sm:max-w-xs">
           <div className="flex flex-col gap-2 justify-between h-full">
             <div className="flex h-[60px] items-center px-6">
               <a href="/" className="flex items-center gap-2 font-semibold">
@@ -148,7 +148,7 @@ const TopNav = ({ className }: TopNavProps) => {
                     src={"/images/logo.jpg"}
                     className="h-[30px] w-[30px] rounded-full object-contain"
                   />
-                  <span className="">Pone Wine 22x</span>
+                  {/* <span className="">Pone Wine 22x </span> */}
                 </div>
               </a>
             </div>
@@ -166,7 +166,7 @@ const TopNav = ({ className }: TopNavProps) => {
                     <div
                       key={idx}
                       // href={item.path}
-                      className={`flex items-center gap-3 rounded px-3 py-2 ${
+                      className={`w-max flex items-center gap-3 rounded px-3 py-2 ${
                         isActive
                           ? "bg-secondary text-active"
                           : "text-gray hover:text-active hover:bg-secondary"
@@ -177,7 +177,7 @@ const TopNav = ({ className }: TopNavProps) => {
                       }} // Close the sheet on click
                     >
                       {item.icon}
-                      {item.label}
+                      {/* {item.label} */}
                     </div>
                   );
                 })}
@@ -189,7 +189,7 @@ const TopNav = ({ className }: TopNavProps) => {
                 onClick={() => setShowDialog(true)}
               >
                 <LogOutIcon className="h-5 w-5" />
-                {translations.logout[language]}
+                {/* {translations.logout[language]} */}
               </div>
             </div>
             {/* <div className="mb-7">
