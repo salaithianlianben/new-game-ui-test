@@ -64,7 +64,7 @@ const BingoGameView = () => {
               >
                 <img
                   src={game.image_url}
-                  className="h-[90%] w-full object-cover rounded-md"
+                  className="h-[90%] w-full object-contain rounded-md"
                 />
                 <span className="line-clamp-1 text-xs">{game.name}</span>
               </button>
