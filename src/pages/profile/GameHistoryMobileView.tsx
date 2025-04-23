@@ -49,7 +49,7 @@ const GameHistoryMobileView = ({ data, loading }: GameHistoryMobileViewProps) =>
                   <div>Bet Amount</div>
                   <div>: {history.total_bet_amount}</div>
                   <div>Win/Loss Amount</div>
-                  <div>: {history.total_transaction_amount}</div>
+                  <div>: {history.total_payount_amount}</div>
                 </div>
               </AccordionContent>
             </AccordionItem>
