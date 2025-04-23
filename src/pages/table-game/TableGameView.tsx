@@ -1,20 +1,21 @@
-import { Game } from "../../@types/game";
 import GameListSkeleton from "../../components/GameListSkeleton";
 import TabsLayout from "../../components/layout/TabsLayout";
 import { translations } from "../../configs/translations";
-import { fetchGameUrl, fetchHotGames } from "../../services/gameService";
+import { fetchGameUrl } from "../../services/gameService";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useLanguage } from "../../context/LanguageContext";
+import { fetchTableGames } from "../../services/tableGameService";
+import { TableGame } from "../../@types/table-game";
 
-const HotGamesView = () => {
+const TableGameView = () => {
   const [searchValue, setSearchValue] = useState("");
   const { language } = useLanguage();
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["GET_HOT_GAMES"],
-    queryFn: fetchHotGames,
+  const { data = [], isLoading } = useQuery({
+    queryKey: ["GET_TABLE_GAMES"],
+    queryFn: fetchTableGames,
   });
 
   const { mutateAsync: getGameUrl } = useMutation({
@@ -36,8 +37,12 @@ const HotGamesView = () => {
       g.name.toLowerCase().includes(searchValue.toLowerCase())
     ) ?? [];
 
-  const handleStartPlay = async (game: Game) => {
-    await getGameUrl(game);
+  const handleStartPlay = async (game: TableGame) => {
+    await getGameUrl({
+      code: game.code,
+      provider_code: game.product_code,
+      type_id: game.game_type_id,
+    });
   };
 
   return (
@@ -57,7 +62,7 @@ const HotGamesView = () => {
                 onClick={() => handleStartPlay(game)}
               >
                 <img
-                  src={game.img}
+                  src={game.image_url}
                   className="h-[90%] w-full object-cover rounded-md"
                 />
                 <span className="line-clamp-1 text-xs">{game.name}</span>
@@ -74,4 +79,4 @@ const HotGamesView = () => {
   );
 };
 
-export default HotGamesView;
+export default TableGameView;

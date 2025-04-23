@@ -81,7 +81,11 @@ const fetchHotGames = async () => {
   }
 };
 
-const fetchGameUrl = async (game: Game) => {
+const fetchGameUrl = async (game: {
+  provider_code: string,
+  code: string,
+  type_id: number
+}) => {
   try {
     const { data } = await apiService.post(
       `${ApiConfig.baseUrl}/${ApiConfig.launchGame}`,

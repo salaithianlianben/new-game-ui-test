@@ -1,3 +1,4 @@
+import { fetchBingoGames } from "../../services/bingoGameService";
 import { Game } from "../../@types/game";
 import GameListSkeleton from "../../components/GameListSkeleton";
 import TabsLayout from "../../components/layout/TabsLayout";
@@ -7,14 +8,15 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useLanguage } from "../../context/LanguageContext";
+import { BingoGame } from "../../@types/bingo";
 
-const HotGamesView = () => {
+const BingoGameView = () => {
   const [searchValue, setSearchValue] = useState("");
   const { language } = useLanguage();
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["GET_HOT_GAMES"],
-    queryFn: fetchHotGames,
+  const { data = [], isLoading } = useQuery({
+    queryKey: ["GET_BINGO_GAMES"],
+    queryFn: fetchBingoGames,
   });
 
   const { mutateAsync: getGameUrl } = useMutation({
@@ -36,8 +38,12 @@ const HotGamesView = () => {
       g.name.toLowerCase().includes(searchValue.toLowerCase())
     ) ?? [];
 
-  const handleStartPlay = async (game: Game) => {
-    await getGameUrl(game);
+  const handleStartPlay = async (game: BingoGame) => {
+    await getGameUrl({
+        code: game.code,
+        provider_code: game.product_code,
+        type_id: game.game_type_id
+    });
   };
 
   return (
@@ -57,7 +63,7 @@ const HotGamesView = () => {
                 onClick={() => handleStartPlay(game)}
               >
                 <img
-                  src={game.img}
+                  src={game.image_url}
                   className="h-[90%] w-full object-cover rounded-md"
                 />
                 <span className="line-clamp-1 text-xs">{game.name}</span>
@@ -74,4 +80,4 @@ const HotGamesView = () => {
   );
 };
 
-export default HotGamesView;
+export default BingoGameView;

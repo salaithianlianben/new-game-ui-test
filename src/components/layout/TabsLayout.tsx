@@ -32,6 +32,21 @@ const TabsLayout = ({
       route: "/hot-games",
     },
   ];
+
+  const anotherStaticTabs = [
+    {
+      label: 'Card Game',
+      route: "/card-games",
+    },
+    {
+      label: 'Table Game',
+      route: "/table-games",
+    },
+    {
+      label: 'Bingo Game',
+      route: "/bingo-games",
+    },
+  ]
   const { data  =[], isLoading } = useQuery({
     queryKey: ["GET_GAME_TYPES"],
     queryFn: fetchGameType,
@@ -42,7 +57,7 @@ const TabsLayout = ({
     route: `/game-type/${gameType.id}`,
   }));
 
-  const tabs = [...staticTabs, ...(dynamicTabs || [])];
+  const tabs = [...staticTabs, ...(dynamicTabs || []), ...anotherStaticTabs ];
 
   return (
     <div className="h-full w-full space-y-2">

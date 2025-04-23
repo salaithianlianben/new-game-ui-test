@@ -12,6 +12,9 @@ import HotGamesView from "../pages/hot-games";
 import GameTypeView from "../pages/game-type";
 import { AuthProvider } from "../context/AuthContext";
 import AppLayout from "../components/layout/AppLayout";
+import CardGameView from "../pages/card-game";
+import TableGameView from "../pages/table-game";
+import BingoGameView from "../pages/bingo-game";
 
 const routers = createBrowserRouter([
   {
@@ -63,6 +66,18 @@ const routers = createBrowserRouter([
       {
         path: "contacts",
         element: <Contact />
+      },
+      {
+        path: "card-games",
+        element: <CardGameView />
+      },
+      {
+        path: "table-games",
+        element: <TableGameView />
+      },
+      {
+        path: "bingo-games",
+        element: <BingoGameView />
       }
     ],
   },
