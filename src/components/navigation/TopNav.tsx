@@ -22,7 +22,11 @@ import { Language } from "../../@types/language";
 // import { useQuery } from "@tanstack/react-query";
 // import { fetchContractInformation } from "../../services/contactService";
 import { translations } from "../../configs/translations";
-import { RiAddCircleFill, RiAddCircleLine, RiAdvertisementLine } from "react-icons/ri";
+import {
+  RiAddCircleFill,
+  RiAddCircleLine,
+  RiAdvertisementLine,
+} from "react-icons/ri";
 import { Skeleton } from "../ui/skeleton";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { useState } from "react";
@@ -179,6 +183,15 @@ const TopNav = ({ className }: TopNavProps) => {
                 })}
               </nav>
             </div>
+            <div className="px-4 my-5">
+              <div
+                className="flex cursor-pointer items-center gap-3 rounded px-3 py-2 hover:bg-secondary hover:text-active"
+                onClick={() => setShowDialog(true)}
+              >
+                <LogOutIcon className="h-5 w-5" />
+                {translations.logout[language]}
+              </div>
+            </div>
             {/* <div className="mb-7">
               {isLoading ? (
                 <div className="flex flex-row items-center justify-center w-full space-x-4">
@@ -233,7 +246,10 @@ const TopNav = ({ className }: TopNavProps) => {
           </div> */}
           <div>
             {user && (
-              <div className="block lg:hidden" onClick={()=> router('/profile')}>
+              <div
+                className="block lg:hidden"
+                onClick={() => router("/profile")}
+              >
                 <p className="font-bold">{user.name}</p>
                 <div className="flex flex-row space-x-1">
                   <img
@@ -276,14 +292,14 @@ const TopNav = ({ className }: TopNavProps) => {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          <div>
+          {/* <div>
             <button
               className="bg-secondary rounded-md p-2"
               onClick={() => setShowDialog(true)}
             >
               <LogOutIcon className="h-5 w-5 text-gray-200" />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
       <Dialog

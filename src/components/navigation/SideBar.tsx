@@ -1,13 +1,15 @@
 // import { useQuery } from "@tanstack/react-query";
-import { ContactIcon, GiftIcon, HomeIcon, UserIcon } from "lucide-react";
-import { ReactNode } from "react";
+import { ContactIcon, GiftIcon, HomeIcon, LogOutIcon, UserIcon } from "lucide-react";
+import { ReactNode, useState } from "react";
 import { RiAdvertisementLine } from "react-icons/ri";
 // import { Skeleton } from "../ui/skeleton";
 import UserInfo from "./UserInfo";
 // import { fetchContractInformation } from "../../services/contactService";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../configs/translations";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import { Button } from "../ui/button";
 // import { fetchBanners } from "../../services/bannerService";
 
 interface SideMenuItem {
@@ -23,6 +25,8 @@ interface SideMenuProps {
 const SideBar = ({ className }: SideMenuProps) => {
   const location = useLocation();
   const { language } = useLanguage();
+  const router = useNavigate();
+  const [ showDialog, setShowDialog ] = useState(false);
 
   const isHomeActive =
     location.pathname === "/" ||
@@ -56,6 +60,11 @@ const SideBar = ({ className }: SideMenuProps) => {
     //   icon: <ContactIcon className="h-5 w-5" />,
     // },
   ] as SideMenuItem[];
+
+  const handleLogout = () => {
+    localStorage.clear();
+    router("/login");
+  };
 
   return (
     <div
@@ -100,6 +109,12 @@ const SideBar = ({ className }: SideMenuProps) => {
             })}
           </nav>
         </div>
+        <div className="px-4 my-5">
+          <div className="flex cursor-pointer items-center gap-3 rounded px-3 py-2 hover:bg-secondary hover:text-active" onClick={()=> setShowDialog(true)}>
+            <LogOutIcon className="h-5 w-5"/>
+            {translations.logout[language]}
+          </div>
+        </div>
         {/* <div className="mb-7">
           {isLoading ? (
             <div className="flex flex-row items-center justify-center w-full space-x-4">
@@ -135,6 +150,35 @@ const SideBar = ({ className }: SideMenuProps) => {
           )}
         </div> */}
       </div>
+      <Dialog
+        open={showDialog}
+        onOpenChange={(isOpen) => !isOpen && setShowDialog(false)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>
+              <span>Are you sure you would like to log out?</span>
+            </DialogTitle>
+          </DialogHeader>
+          <div className="flex flex-col space-y-3">
+            <div className="flex flex-row justify-end items-center space-x-3">
+              <Button
+                type="button"
+                className="border border-active hover:bg-secondary"
+                onClick={() => setShowDialog(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                className="bg-active text-black hover:text-white hover:bg-secondary hover:border hover:border-active"
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

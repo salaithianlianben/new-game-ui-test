@@ -132,5 +132,11 @@ export const translations: Translations = {
     my: "အားလုံး",
     th: "ทั้งหมด",
     zh: "全部"
+  },
+  logout: {
+    en: "Logout",
+    my: "ထွက်ရန်",
+    zh: "退出",
+    th: "การออกจากระบบ"
   }
 };

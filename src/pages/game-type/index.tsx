@@ -29,7 +29,7 @@ const GameTypeView = () => {
   const providerFromUrl = searchParams.get("provider");
 
   const [tabValue, setTabValue] = useState<number | undefined | null>(
-    Number(providerFromUrl)
+    providerFromUrl ? Number(providerFromUrl) : null
   );
   const [searchValue, setSearchValue] = useState("");
 
@@ -78,7 +78,7 @@ const GameTypeView = () => {
   };
 
   useEffect(() => {
-    if (gameProducts && gameProducts.products.length > 0 && !tabValue) {
+    if (gameProducts && gameProducts.products.length > 0 && tabValue !== null) {
       const firstProviderId = gameProducts.products[0].id;
       setTabValue(firstProviderId);
       router(`/game-type/${id}?provider=${firstProviderId}`);
