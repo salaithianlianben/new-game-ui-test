@@ -69,15 +69,15 @@ const routers = createBrowserRouter([
       },
       {
         path: "card-games",
-        element: <CardGameView />
+        element: <HomeLayout><CardGameView /></HomeLayout>
       },
       {
         path: "table-games",
-        element: <TableGameView />
+        element:  <HomeLayout><TableGameView /></HomeLayout>
       },
       {
         path: "bingo-games",
-        element: <BingoGameView />
+        element: <HomeLayout><BingoGameView /></HomeLayout>
       }
     ],
   },

@@ -22,6 +22,10 @@ import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../configs/translations";
 import toast from "react-hot-toast";
 import { Game } from "../../@types/game";
+import { fetchCardGames } from "../../services/cardGameService";
+import { fetchBingoGames } from "../../services/bingoGameService";
+import { fetchTableGames } from "../../services/tableGameService";
+import { CardGame } from "../../@types/card-game";
 
 const HomePage = () => {
   const router = useNavigate();
@@ -44,6 +48,21 @@ const HomePage = () => {
   const { data: hotgames = [], isLoading: isLoadingHotgames } = useQuery({
     queryKey: ["GET_HOT_GAMES"],
     queryFn: fetchHotGames,
+  });
+
+  const { data: card_games = [], isLoading: isLoadingCardGames } = useQuery({
+    queryKey: ["GET_CARD_GAMES"],
+    queryFn: fetchCardGames,
+  });
+
+  const { data: bingo_games = [], isLoading: isLoadingBingoGames } = useQuery({
+    queryKey: ["GET_BINGO_GAMES"],
+    queryFn: fetchBingoGames,
+  });
+
+  const { data: table_games =[], isLoading: isLoadingTableGames } = useQuery({
+    queryKey: ["GET_TABLE_GAMES"],
+    queryFn: fetchTableGames,
   });
 
   const filteredGameProducts = gameProducts.map((game) => ({
@@ -80,7 +99,15 @@ const HomePage = () => {
   });
 
   const handleStartPlay = async (game: Game) => {
-      await getGameUrl(game);
+    await getGameUrl(game);
+  };
+
+  const handleStartPlays = async (game: CardGame) => {
+      await getGameUrl({
+        code: game.code,
+        provider_code: game.product_code,
+        type_id: game.game_type_id,
+      });
     };
 
   useEffect(() => {
@@ -151,9 +178,7 @@ const HomePage = () => {
                   <CarouselItem
                     key={idx}
                     className=" basis-1/3 sm:basis-1/5 md:basis-1/5 lg:basis-1/6  cursor-pointer space-y-2"
-                    onClick={() =>
-                      handleStartPlay(gp)
-                    }
+                    onClick={() => handleStartPlay(gp)}
                   >
                     <div>
                       <img
@@ -229,6 +254,123 @@ const HomePage = () => {
             </div>
           ))
         )}
+
+        <div className="space-y-3">
+          <div className="inline-flex flex-row space-x-3 bg-black w-auto">
+            <div className="bg-active w-[5px]" />
+            <div className="p-1 pr-3">
+              <span>Card Games</span>
+            </div>
+          </div>
+          {isLoadingCardGames ? (
+            <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full">
+              <GameListSkeleton />
+            </div>
+          ) : (
+            <Carousel className=" max-w-[100vw] lg:max-w-[80vw] ">
+              <CarouselContent>
+                {card_games.map((gp, idx) => (
+                  <CarouselItem
+                    key={idx}
+                    className=" basis-1/3 sm:basis-1/5 md:basis-1/5 lg:basis-1/6  cursor-pointer space-y-2"
+                    onClick={() => handleStartPlays(gp)}
+                  >
+                    <div>
+                      <img
+                        src={gp.image_url}
+                        alt={gp.name}
+                        className="object-contain w-full h-[100px] md:h-[200px] rounded-lg"
+                      />
+                    </div>
+                    <p className="text-xs text-center font-bold">{gp.name}</p>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="absolute -top-[25%] sm:-top-[15%] right-[7%] sm:right-[5%] md:right-[3%] ">
+                <CarouselPrevious className="!border-white !border-2" />
+                <CarouselNext className="-left-2 !border-white !border-2" />
+              </div>
+            </Carousel>
+          )}
+        </div>
+
+        <div className="space-y-3">
+          <div className="inline-flex flex-row space-x-3 bg-black w-auto">
+            <div className="bg-active w-[5px]" />
+            <div className="p-1 pr-3">
+              <span>Table Games</span>
+            </div>
+          </div>
+          {isLoadingTableGames ? (
+            <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full">
+              <GameListSkeleton />
+            </div>
+          ) : (
+            <Carousel className=" max-w-[100vw] lg:max-w-[80vw] ">
+              <CarouselContent>
+                {table_games.map((gp, idx) => (
+                  <CarouselItem
+                    key={idx}
+                    className=" basis-1/3 sm:basis-1/5 md:basis-1/5 lg:basis-1/6  cursor-pointer space-y-2"
+                    onClick={() => handleStartPlays(gp)}
+                  >
+                    <div>
+                      <img
+                        src={gp.image_url}
+                        alt={gp.name}
+                        className="object-contain w-full h-[100px] md:h-[200px] rounded-lg"
+                      />
+                    </div>
+                    <p className="text-xs text-center font-bold">{gp.name}</p>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="absolute -top-[25%] sm:-top-[15%] right-[7%] sm:right-[5%] md:right-[3%] ">
+                <CarouselPrevious className="!border-white !border-2" />
+                <CarouselNext className="-left-2 !border-white !border-2" />
+              </div>
+            </Carousel>
+          )}
+        </div>
+
+        <div className="space-y-3">
+          <div className="inline-flex flex-row space-x-3 bg-black w-auto">
+            <div className="bg-active w-[5px]" />
+            <div className="p-1 pr-3">
+              <span>Bingo Games</span>
+            </div>
+          </div>
+          {isLoadingBingoGames ? (
+            <div className="grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 w-full">
+              <GameListSkeleton />
+            </div>
+          ) : (
+            <Carousel className=" max-w-[100vw] lg:max-w-[80vw] ">
+              <CarouselContent>
+                {bingo_games.map((gp, idx) => (
+                  <CarouselItem
+                    key={idx}
+                    className=" basis-1/3 sm:basis-1/5 md:basis-1/5 lg:basis-1/6  cursor-pointer space-y-2"
+                    onClick={() => handleStartPlays(gp)}
+                  >
+                    <div>
+                      <img
+                        src={gp.image_url}
+                        alt={gp.name}
+                        className="object-contain w-full h-[100px] md:h-[200px] rounded-lg"
+                      />
+                    </div>
+                    <p className="text-xs text-center font-bold">{gp.name}</p>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="absolute -top-[25%] sm:-top-[15%] right-[7%] sm:right-[5%] md:right-[3%] ">
+                <CarouselPrevious className="!border-white !border-2" />
+                <CarouselNext className="-left-2 !border-white !border-2" />
+              </div>
+            </Carousel>
+          )}
+        </div>
       </div>
       <></>
     </TabsLayout>
