@@ -82,7 +82,7 @@ const GameTypeView = () => {
   };
 
   useEffect(() => {
-    if (gameProducts && gameProducts.products.length > 0 && isEmpty(tabValue)) {
+    if (gameProducts && gameProducts.products.length > 0 && !tabValue) {
       const firstProviderId = gameProducts.products[0].id;
       setTabValue(firstProviderId);
       router(`/game-type/${id}?provider=${firstProviderId}`);

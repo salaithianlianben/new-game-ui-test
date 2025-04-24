@@ -27,6 +27,24 @@ const FilterSideMenu = () => {
     queryFn: fetchGameType,
   });
 
+  const anotherStaticTabs = [
+    {
+      label: 'Card Game',
+      route: "/card-games",
+      id: 'card-games'
+    },
+    {
+      label: 'Table Game',
+      route: "/table-games",
+      id: 'table-games'
+    },
+    {
+      label: 'Bingo Game',
+      route: "/bingo-games",
+      id: 'bingo-games'
+    },
+  ]
+
   const tabs = [
     {
       label: translations.all[language],
@@ -43,6 +61,7 @@ const FilterSideMenu = () => {
       route: `/game-type/${gameType.id}`,
       id: gameType.id.toString(),
     })) || []),
+    ...anotherStaticTabs
   ];
 
   const handleTabClick = (tab: (typeof tabs)[number]) => {
