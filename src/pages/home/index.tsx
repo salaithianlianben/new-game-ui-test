@@ -110,7 +110,7 @@ const HomePage = () => {
             </div>
           </div>
           <div className="flex flex-row space-x-4">
-            <div
+            {/* <div
               className="cursor-pointer"
               onClick={() => handleClickGame("shan")}
             >
@@ -119,7 +119,7 @@ const HomePage = () => {
                 alt={"Shan"}
                 className="object-contain w-full h-[100px] md:h-[200px] rounded-lg"
               />
-            </div>
+            </div> */}
             <div
               className="cursor-pointer"
               onClick={() => handleClickGame("ponewine")}
