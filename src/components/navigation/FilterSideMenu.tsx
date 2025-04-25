@@ -74,6 +74,12 @@ const FilterSideMenu = () => {
     const computeActiveTab = () => {
       if (location.pathname === "/") return "all";
 
+      if(location.pathname === "/card-games") return "card-games";
+
+      if(location.pathname === "/table-games") return "table-games";
+
+      if(location.pathname === "/bingo-games") return "bingo-games";
+
       const match = location.pathname.match(/^\/game-type\/(\d+)$/);
       return match ? match[1] : null;
     };
