@@ -17,6 +17,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../configs/translations";
 
 // Validation schema using Zod
 const registerSchema = z
@@ -43,6 +45,7 @@ type RegisterFormData = z.infer<typeof registerSchema>;
 
 const RegisterPage = () => {
   const router = useNavigate();
+  const { language } = useLanguage();
   const [pwType, setPwType] = useState("password");
   const [error, setError] = useState<string | null>(null);
 
@@ -98,7 +101,7 @@ const RegisterPage = () => {
             alt="Logo"
           />
           <h1 className={`mt-10 mb-4  hidden bg-gradient-to-r from-[#b2ff54] via-[#57b400] to-[#87600c] bg-clip-text py-[10px] text-4xl font-black uppercase text-transparent lg:block`}>
-            REGISTER
+            {translations.register[language]}
           </h1>
           <form onSubmit={handleSubmit(onSubmit)} className={`space-y-4`}>
             {/* Mobile Number */}
@@ -106,7 +109,7 @@ const RegisterPage = () => {
               <div className="w-full px-2 flex items-center gap-1 border-l-2 border-x-active pb-1 border-b-2 border-y-black">
                 <PhoneIcon className="text-active" aria-label="Phone Icon" />
                 <Input
-                  placeholder="Mobile Number"
+                  placeholder={translations.mobile_number[language]}
                   {...register("mobileNumber")}
                   aria-label="Mobile Number"
                 />
@@ -123,7 +126,7 @@ const RegisterPage = () => {
               <div className="w-full px-2 flex items-center gap-1 border-l-2 border-x-active pb-1 border-b-2 border-y-black">
                 <UserIcon className="text-active" aria-label="Name Icon" />
                 <Input
-                  placeholder="Name"
+                  placeholder={translations.username[language]}
                   {...register("name")}
                   aria-label="Name"
                 />
@@ -143,7 +146,7 @@ const RegisterPage = () => {
                   />
                   <Input
                     type={pwType === "password" ? "password" : "text"}
-                    placeholder="Password"
+                    placeholder={translations.password[language]}
                     {...register("password")}
                     aria-label="Password"
                   />
@@ -179,7 +182,7 @@ const RegisterPage = () => {
                   />
                   <Input
                     type={pwType === "password" ? "password" : "text"}
-                    placeholder="Confirm Password"
+                    placeholder={translations.confirm_password[language]}
                     {...register("confirm_password")}
                     aria-label="Confirm Password"
                   />
@@ -237,9 +240,9 @@ const RegisterPage = () => {
               >
                 {isPending ? (
                   <Loader2Icon className="h-4 w-4 animate-spin" />
-                ) : (
-                  "Sign Up"
-                )}
+                ) : 
+                  translations.sign_up[language]
+                }
               </Button>
             </div>
           </form>
@@ -253,7 +256,7 @@ const RegisterPage = () => {
               className="h-[50px] w-[50px]"
               alt="Left Pattern"
             />
-            <p className="bg-secondary pt-1 h-10 mt-2">Already have an account ?</p>
+            <p className="bg-secondary pt-1 h-10 mt-2">{translations.already_have_an_account[language]}</p>
             <img
               src={"/images/rightPattern.svg"}
               className="h-[50px] w-[50px]"
@@ -265,7 +268,7 @@ const RegisterPage = () => {
               onClick={() => router("/login")}
               className="px-12 border bg-black hover:bg-white border-white text-white hover:text-black font-bold rounded-full"
             >
-              Login
+              {translations.login[language]}
             </Button>
           </div>
         </div>

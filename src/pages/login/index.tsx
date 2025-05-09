@@ -12,9 +12,11 @@ import {
   FormItem,
   FormMessage,
 } from "../../components/ui/form";
-import { EyeIcon, EyeOffIcon, LockIcon, UserIcon } from "lucide-react";
+import { EyeIcon, EyeOffIcon, Loader2Icon, LockIcon, UserIcon } from "lucide-react";
 import { signIn } from "../../services/userService";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../../context/LanguageContext";
+import { translations } from "../../configs/translations";
 
 // Define Zod schema
 const formSchema = z.object({
@@ -30,6 +32,8 @@ type FormData = z.infer<typeof formSchema>;
 
 const LoginPage = () => {
   const router = useNavigate();
+   const { language } = useLanguage();
+   console.log(language)
   const [pwType, setPwType] = useState("password");
   const [error, setError] = useState<string | null>(null);
 
@@ -71,7 +75,7 @@ const LoginPage = () => {
             alt="Logo"
           />
           <h1 className="my-10 hidden bg-gradient-to-r from-[#b2ff54] via-[#57b400] to-[#87600c] bg-clip-text py-[10px] text-4xl font-black uppercase text-transparent lg:block">
-            WELCOME
+            {translations.welcome[language]}
           </h1>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -88,7 +92,7 @@ const LoginPage = () => {
                           aria-label="Username Icon"
                         />
                         <Input
-                          placeholder="Username"
+                          placeholder={translations.username[language]}
                           {...field}
                           aria-label="Username"
                         />
@@ -112,7 +116,7 @@ const LoginPage = () => {
                         />
                         <Input
                           type={pwType === "password" ? "password" : "text"}
-                          placeholder="Password"
+                          placeholder={translations.password[language]}
                           {...field}
                           aria-label="Password"
                         />
@@ -142,7 +146,7 @@ const LoginPage = () => {
                   disabled={isPending}
                   className="w-max border px-16 mt-6 bg-active border-active text-black hover:text-active text-base font-bold rounded-full"
                 >
-                  {isPending ? "Logging in..." : "Login"}
+                  {isPending ? <Loader2Icon className="h-4 w-4 animate-spin" /> : translations.login[language]}
                 </Button>
               </div>
             </form>
@@ -156,7 +160,7 @@ const LoginPage = () => {
               alt="Left Pattern"
               className="h-[50px] w-[50px]"
             />
-            <p className="bg-secondary pt-1 h-10 mt-2">New member?</p>
+            <p className="bg-secondary pt-1 h-10 mt-2">{translations.new_member[language]}</p>
             <img
               src={"/images/rightPattern.svg"}
               className="h-[50px] w-[50px]"
@@ -168,7 +172,7 @@ const LoginPage = () => {
               onClick={() => router("/register")}
               className="px-12 border bg-black hover:bg-white border-white text-white hover:text-black font-bold rounded-full"
             >
-              Sign Up
+              {translations.sign_up[language]}
             </Button>
           </div>
         </div>

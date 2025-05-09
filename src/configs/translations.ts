@@ -107,13 +107,13 @@ export const translations: Translations = {
     en: "Contacts",
     my: "ဆက်သွယ်ရန်",
     th: "การติดต่อ",
-    zh: "聯絡方式"
+    zh: "聯絡方式",
   },
   ponewine_report: {
     en: "Pone Wine Report",
     my: "ပုံဝိုင်း အစီရင်ခံစာ",
     th: "Pone Wine Report",
-    zh: "Pone Wine Report"
+    zh: "Pone Wine Report",
   },
   burmese_games: {
     en: "Burmese Games",
@@ -125,24 +125,96 @@ export const translations: Translations = {
     en: "Hot Games",
     my: "ဟော့ဂိမ်း",
     th: "เกมร้อนแรง",
-    zh: "熱門遊戲"
+    zh: "熱門遊戲",
   },
   all: {
     en: "All",
     my: "အားလုံး",
     th: "ทั้งหมด",
-    zh: "全部"
+    zh: "全部",
   },
   logout: {
     en: "Logout",
     my: "ထွက်ရန်",
     zh: "退出",
-    th: "การออกจากระบบ"
+    th: "การออกจากระบบ",
   },
   no_game_available: {
     en: "No games available",
     my: "ဂိမ်းများမရရှိနိုင်ပါ။",
     zh: "沒有可用的遊戲",
-    th: "ไม่มีเกมให้เลือก"
-  }
+    th: "ไม่มีเกมให้เลือก",
+  },
+  are_you_sure_you_would_like_to_log_out: {
+    en: "Are you sure you would like to log out?",
+    my: "ထွက်လိုသည်မှာ သေချာပါသလား?",
+    zh: "您確定要退出嗎？",
+    th: "คุณแน่ใจว่าต้องการออกจากระบบหรือไม่?",
+  },
+  cancel: {
+    en: "Cancel",
+    my: "ပယ်ဖျက်ရန်",
+    zh: "Cancel",
+    th: "Cancel",
+  },
+  username: {
+    en: "Username",
+    my: "လျှို့ဝှက်နာမည်",
+    zh: "Username",
+    th: "Username",
+  },
+  password: {
+    en: "Password",
+    my: "လျှို့ဝှက်ကုဒ်",
+    zh: "Password",
+    th: "Password",
+  },
+  welcome: {
+    my: "ကြိုဆိုပါတယ်",
+    en: "WELCOME",
+    zh: "WELCOME",
+    th: "WELCOME",
+  },
+  new_member: {
+    my: "အဖွဲ့ဝင်အသစ်?",
+    en: "New Member?",
+    zh: "New Member?",
+    th: "New Member?",
+  },
+  sign_up: {
+    my: "စာရင်းသွင်းရန်",
+    en: "Sign Up",
+    zh: "Sign Up",
+    th: "Sign Up",
+  },
+  login: {
+    my: "အကောင့်ဝင်ရန်",
+    en: "Login",
+    zh: "Login",
+    th: "Login",
+  },
+  mobile_number: {
+    my: "ဖုန်းနံပါတ်",
+    en: "Mobile Number",
+    zh: "Mobile Number",
+    th: "Mobile Number",
+  },
+  confirm_password: {
+    my: "လျှို့ဝှက်ကုဒ်ပြန်ထည့်ရန်",
+    en: "Confirm Password",
+    zh: "Confirm Password",
+    th: "Confirm Password",
+  },
+  already_have_an_account: {
+    my: "အကောင့်ရှိပြီးသားလား?",
+    en: "Confirm Password",
+    zh: "Confirm Password",
+    th: "Confirm Password",
+  },
+  register: {
+    my: "စာရင်းသွင်းရန်",
+    en: "Register",
+    zh: "Register",
+    th: "Register",
+  },
 };

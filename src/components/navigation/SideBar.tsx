@@ -157,7 +157,7 @@ const SideBar = ({ className }: SideMenuProps) => {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>
-              <span>Are you sure you would like to log out?</span>
+              <span>{translations.are_you_sure_you_would_like_to_log_out[language]}</span>
             </DialogTitle>
           </DialogHeader>
           <div className="flex flex-col space-y-3">
@@ -167,13 +167,13 @@ const SideBar = ({ className }: SideMenuProps) => {
                 className="border border-active hover:bg-secondary"
                 onClick={() => setShowDialog(false)}
               >
-                Cancel
+                {translations.cancel[language]}
               </Button>
               <Button
                 className="bg-active text-black hover:text-white hover:bg-secondary hover:border hover:border-active"
                 onClick={handleLogout}
               >
-                Logout
+                {translations.logout[language]}
               </Button>
             </div>
           </div>
