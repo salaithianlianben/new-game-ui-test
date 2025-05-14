@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,9 +12,9 @@
   
 
   body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #171717;
-  color: white;
+  /* font-family: Arial, Helvetica, sans-serif; */
+ font-family: "Atkinson Hyperlegible", sans-serif;
+   color: white;
 }
  
 /* width */
@@ -40,4 +43,7 @@
       -ms-overflow-style: none;  /* IE and Edge */
       scrollbar-width: none;  /* Firefox */
 }
+}
+.styled-scroll::-webkit-scrollbar{
+  display: none;
 }
