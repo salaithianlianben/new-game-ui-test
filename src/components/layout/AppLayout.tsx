@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
+import SideBar from "../navigation/SideBar";
+import TopNav from "../navigation/TopNav";
 
 const AppLayout = () => {
   return (
-    <div className="bg-background text-white">
-      <div className="space-y-3">
-        <Outlet />
-      </div>
-    </div>
+    <div className="min-h-screen bg-primary-radial bg-no-repeat text-white">
+      <TopNav/>
+         <Outlet />
+     </div>
   );
 };
 

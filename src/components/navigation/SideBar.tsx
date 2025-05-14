@@ -1,186 +1,68 @@
-// import { useQuery } from "@tanstack/react-query";
-import { ContactIcon, GiftIcon, HomeIcon, LogOutIcon, UserIcon } from "lucide-react";
-import { ReactNode, useState } from "react";
-import { RiAdvertisementLine } from "react-icons/ri";
-// import { Skeleton } from "../ui/skeleton";
-import UserInfo from "./UserInfo";
-// import { fetchContractInformation } from "../../services/contactService";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useLanguage } from "../../context/LanguageContext";
-import { translations } from "../../configs/translations";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
-import { Button } from "../ui/button";
-// import { fetchBanners } from "../../services/bannerService";
+import React from 'react'
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
+import { AlignJustifyIcon, BanknoteArrowDownIcon, CircleUserRoundIcon, DiamondIcon, GemIcon, HeadsetIcon, HouseIcon, ShieldIcon, UserPlusIcon } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import SlotIcon from '../icons/SlotIcon'
+import LiveCasinoIcon from '../icons/LiveCasinoIcon'
+import FishingIcon from '../icons/FishingIcon'
+import TableIcon from '../icons/TableIcon'
+import RegisterIcon from '../icons/RegisterIcon'
+import LoginIcon from '../icons/LoginIcon'
+import LanguageDropdown from '../widgets/LanguageDropdown'
+ const SideBar = () => {
+  const items = [
+    {id:1,name:'Home',icon:<HouseIcon/>,link:'/'},
+        {id:2,name:'Join Now',icon:<RegisterIcon className='w-6 h-6' />,link:'/'},
+    {id:3,name:'Login',icon:<LoginIcon  className='w-6 h-6' />,link:'/'},
+      // {id:4,name:'My Profile',icon:<CircleUserRoundIcon/>,link:'/'},
+        {id:5,name:'Cash In / Out',icon:<BanknoteArrowDownIcon/>,link:'/'},
+    {id:6,name:'Card Game',icon:<DiamondIcon/>,link:'/'},
+    {id:7,name:'Slot',icon:<SlotIcon className='w-6 h-6' />,link:'/'},
+    {id:8,name:'Fishing',icon:<FishingIcon className='w-6 h-6'  />,link:'/'},
+    {id:9,name:'Live casino',icon:<LiveCasinoIcon className='w-6 h-6' />,link:'/'},
+    {id:10,name:'Table',icon:<TableIcon className='w-6 h-6' />,link:'/'},
+        {id:14,name:'Bingo',icon:<TableIcon className='w-6 h-6' />,link:'/'},
+      {id:12,name:'Promotion',icon:<GemIcon/>,link:'/'},
+    {id:13,name:'Contact Us',icon:<HeadsetIcon/>,link:'/'},
 
-interface SideMenuItem {
-  label: string;
-  path: string;
-  icon: ReactNode;
-}
-
-interface SideMenuProps {
-  className?: string;
-}
-
-const SideBar = ({ className }: SideMenuProps) => {
-  const location = useLocation();
-  const { language } = useLanguage();
-  const router = useNavigate();
-  const [ showDialog, setShowDialog ] = useState(false);
-
-  const isHomeActive =
-    location.pathname === "/" ||
-    location.pathname.startsWith("/hot-games") ||
-    location.pathname.startsWith("/game-type");
-
-  const sideMenuItems = [
-    {
-      label: translations.home[language],
-      path: "/",
-      icon: <HomeIcon className="h-5 w-5" />,
-    },
-    {
-      label: translations.videoAds[language],
-      path: "/video-ads",
-      icon: <RiAdvertisementLine className="h-5 w-5" />,
-    },
-    {
-      label: translations.promotions[language],
-      path: "/promotions",
-      icon: <GiftIcon className="h-5 w-5" />,
-    },
-    {
-      label: translations.account[language],
-      path: "/profile",
-      icon: <UserIcon className="h-5 w-5" />,
-    },
-    // {
-    //   label: translations.contacts[language],
-    //   path: "/contacts",
-    //   icon: <ContactIcon className="h-5 w-5" />,
-    // },
-  ] as SideMenuItem[];
-
-  const handleLogout = () => {
-    localStorage.clear();
-    router("/login");
-  };
-
+  ]
+  const navigate = useNavigate();
+  const goToLink =(link:string)=>{
+    navigate(link);
+  }
   return (
-    <div
-      className={`hidden border-r bg-muted/40 lg:block border-gray-800 ${className}`}
-    >
-      <div className="flex flex-col gap-2 justify-between h-full">
-        <div className="flex h-[60px] items-center px-6">
-          <Link to="/" className="flex items-center gap-2 font-semibold">
-            <div className="flex flex-row space-x-3 items-center">
-              <img
-                src={"/images/logo.jpg"}
-                className="h-[30px] w-[30px] rounded-full object-contain"
-              />
-              <span className="">Pone Wine 22x</span>
-            </div>
-          </Link>
-        </div>
-        {/* <div className="p-5">
-          <UserInfo />
-        </div> */}
-        <div className="flex-grow">
-          <nav className="grid items-start px-4 text-sm font-medium space-y-2">
-            {sideMenuItems.map((item, idx) => {
-              const isActive =
-                item.path === "/"
-                  ? isHomeActive
-                  : location.pathname === item.path;
-              return (
-                <Link
-                  key={idx}
-                  to={item.path}
-                  className={`flex items-center gap-3 rounded px-3 py-2 ${
-                    isActive
-                      ? "bg-secondary text-active"
-                      : "text-gray hover:text-active hover:bg-secondary"
-                  }`}
-                >
-                  {item.icon}
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-        <div className="px-4 my-5">
-          <div className="flex cursor-pointer items-center gap-3 rounded px-3 py-2 hover:bg-secondary hover:text-active" onClick={()=> setShowDialog(true)}>
-            <LogOutIcon className="h-5 w-5"/>
-            {translations.logout[language]}
-          </div>
-        </div>
-        {/* <div className="mb-7">
-          {isLoading ? (
-            <div className="flex flex-row items-center justify-center w-full space-x-4">
-              <Skeleton className="h-7 w-7 rounded-md bg-secondary" />
-              <Skeleton className="h-7 w-7 rounded-md bg-secondary" />
-              <Skeleton className="h-7 w-7 rounded-md bg-secondary" />
-            </div>
-          ) : (
-            <div className="flex flex-row items-center justify-center w-full space-x-4">
-              {data?.contacts?.map((c, idx) => (
-                <a key={idx} href={c.value} target="_blank">
-                  {c.name === "Facebook" && (
-                    <img
-                      src={"/icons/facebook.png"}
-                      className="h-10 w-10 rounded-full"
-                    />
-                  )}
-                  {c.name === "Viber" && (
-                    <img
-                      src={"/icons/viber.png"}
-                      className="h-10 w-10 rounded-full"
-                    />
-                  )}
-                  {c.name === "Telegram" && (
-                    <img
-                      src={"/icons/telegram.png"}
-                      className="h-10 w-10 rounded-full"
-                    />
-                  )}
-                </a>
-              ))}
-            </div>
-          )}
-        </div> */}
+    <div>
+      <Sheet>
+  <SheetTrigger>
+    <AlignJustifyIcon/>
+  </SheetTrigger>
+  <SheetContent >
+    <SheetHeader>
+      <SheetTitle >
+        LOGO
+      <div className="my-5">
+        <LanguageDropdown/>
       </div>
-      <Dialog
-        open={showDialog}
-        onOpenChange={(isOpen) => !isOpen && setShowDialog(false)}
-      >
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>
-              <span>{translations.are_you_sure_you_would_like_to_log_out[language]}</span>
-            </DialogTitle>
-          </DialogHeader>
-          <div className="flex flex-col space-y-3">
-            <div className="flex flex-row justify-end items-center space-x-3">
-              <Button
-                type="button"
-                className="border border-active hover:bg-secondary"
-                onClick={() => setShowDialog(false)}
-              >
-                {translations.cancel[language]}
-              </Button>
-              <Button
-                className="bg-active text-black hover:text-white hover:bg-secondary hover:border hover:border-active"
-                onClick={handleLogout}
-              >
-                {translations.logout[language]}
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </div>
-  );
-};
 
-export default SideBar;
+      </SheetTitle>
+      <SheetDescription className=''>
+       <div className="flex flex-col space-y-4">
+        {items.map((item)=>{
+          return <div onClick={()=>goToLink(item.link)} key={item.id} className='flex items-center gap-3'>
+            {item.icon}
+            <p className='text-[15px] sm:text-base'>{item.name}</p>
+          </div>
+        })}
+        
+
+       </div>
+      </SheetDescription>
+    </SheetHeader>
+  </SheetContent>
+</Sheet>
+
+    </div>
+  )
+}
+
+export default SideBar
