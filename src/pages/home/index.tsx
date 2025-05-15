@@ -4,12 +4,10 @@ import TopNav from "../../components/navigation/TopNav";
 import Banners from "../../components/widgets/Banners";
 
 const HomePage = () => {
-  
   return (
     <div className="">
-      <Banners/>
-    <HomeGames/>
-       
+      <Banners />
+      <HomeGames />
     </div>
   );
 };
