@@ -1,6 +1,6 @@
 import React from 'react'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
-import { AlignJustifyIcon, BanknoteArrowDownIcon, CircleUserRoundIcon, DiamondIcon, GemIcon, HeadsetIcon, HouseIcon, ShieldIcon, UserPlusIcon } from 'lucide-react'
+import { AlignJustifyIcon, ArrowDownWideNarrowIcon, BanknoteArrowDownIcon, CircleUserRoundIcon, DiamondIcon, GemIcon, HeadsetIcon, HouseIcon, ShieldIcon, UserPlusIcon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import SlotIcon from '../icons/SlotIcon'
 import LiveCasinoIcon from '../icons/LiveCasinoIcon'
@@ -33,8 +33,8 @@ import LanguageDropdown from '../widgets/LanguageDropdown'
   return (
     <div>
       <Sheet>
-  <SheetTrigger>
-    <AlignJustifyIcon/>
+  <SheetTrigger className=' bg-activeGradient text-black p-1.5 rounded-md'>
+    <AlignJustifyIcon size={28}/>
   </SheetTrigger>
   <SheetContent >
     <SheetHeader>

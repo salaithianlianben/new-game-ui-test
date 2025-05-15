@@ -4,7 +4,7 @@ import TopNav from "../navigation/TopNav";
 
 const AppLayout = () => {
   return (
-    <div className="min-h-screen bg-primary-radial bg-no-repeat text-white">
+    <div className="min-h-screen bg-secondary text-white">
       <TopNav/>
          <Outlet />
      </div>
