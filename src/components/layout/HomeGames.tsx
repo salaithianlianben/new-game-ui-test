@@ -6,6 +6,7 @@ import cFishing from "../../../public/icons/cFishing.png";
 import cCasino from "../../../public/icons/cCasino.png";
 import cSport from "../../../public/icons/cSport.png";
 import { Button } from "../ui/button";
+import { ArrowRightIcon, ClubIcon, SparklesIcon, ThumbsUpIcon, TrophyIcon, UserIcon } from "lucide-react";
 const HomeGames = () => {
   const gameCategories = [
     { id: 0, name: "Home", icon: cHome, link: "/" },
@@ -19,14 +20,14 @@ const HomeGames = () => {
   ];
 
   return (
-    <div>
-      <div className="pt-2 px-5 styled-scroll overflow-x-scroll flex justify-between lg:justify-center items-center bg-primary-radial bg-primary-radial-alt gap-8 lg:gap-16">
+    <div className="lg:px-20">
+      <div className="pt-2 px-5 styled-scroll overflow-x-scroll flex justify-between lg:justify-center items-center bg-primary-radial bg-primary-radial-alt gap-8 lg:gap-16 lg:hidden">
         {gameCategories.map((item) => {
           return (
             <div
               key={item.id}
               className={
-                item.id === 0 ? " border-b-4 border-secondary pb-1" : "pb-2"
+                item.id === 0 ? " border-b-4 border-primary pb-1" : "pb-2"
               }
             >
               <img
@@ -39,31 +40,54 @@ const HomeGames = () => {
           );
         })}
       </div>
-      <div className="items-center flex justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:w-[70%] w-full">
-          {gameCategories.splice(1, 6).map((item) => {
-            return (
-              <div
-                key={item.id}
-                className="cursor-pointer basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/6 px-5 py-3 relative group"
-              >
-                <h1 className="uppercase font-bold text-secondaryGradient">
-                  {item.name}
-                </h1>
-                <img
-                  src="https://mogame-bucket.s3.ap-southeast-1.amazonaws.com/GameFile/MakerProjectFile/JILI/102/icon.png"
-                  className="w-full h-auto rounded-sm group-hover:scale-105 transition-all duration-300 ease-in-out"
-                />
-                <Button className="absolute bottom-[14%] left-[15%] bg-secondary-gradient border-secondaryGradient group-hover:scale-105 !text-black hover:shadow-2xl">
-                  PLAY NOW
-                </Button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      <DemoGameGrid title="Most Popular" icon={<TrophyIcon/>} iconBg="#D4B374" />
+      <DemoGameGrid title="Recent Big Wins" icon={<ThumbsUpIcon/>} iconBg="#A675FB" />
+    <DemoGameGrid title="Slot Games" icon={<SparklesIcon/>} iconBg="#3A6BFF" />
+      <DemoGameGrid title="Live Casino Games" icon={<ClubIcon/>} iconBg="#FF00C2" />
     </div>
   );
 };
 
 export default HomeGames;
+
+interface Props  {
+  title:string;
+  icon:any;
+  iconBg:string;
+}
+const DemoGameGrid = ({title,icon,iconBg}:Props)=>{
+  const imgs = [
+    'https://storage.googleapis.com/ace-my/Game/110/1100100009.webp',
+    'https://storage.googleapis.com/ace-my/Game/101/1010200032.webp',
+    'https://storage.googleapis.com/ace-my/Game/101/1010100110.webp',
+    'https://storage.googleapis.com/ace-my/Game/106/1060100018.webp',
+    'https://storage.googleapis.com/ace-my/Game/101/1010100026.webp',
+    'https://storage.googleapis.com/ace-my/Game/108/1080100411.webp',
+    'https://storage.googleapis.com/ace-my/Game/110/1100100009.webp',
+    'https://storage.googleapis.com/ace-my/Game/101/1010200032.webp',
+    'https://storage.googleapis.com/ace-my/Game/101/1010100110.webp',
+    'https://storage.googleapis.com/ace-my/Game/106/1060100018.webp',
+    'https://storage.googleapis.com/ace-my/Game/101/1010100026.webp',
+    'https://storage.googleapis.com/ace-my/Game/108/1080100411.webp'
+  ]
+  return (<div className="pt-8 cursor-pointer">
+    <div className="flex justify-between items-center ">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="p-1 rounded-md" style={{background:iconBg}}>{icon}</div>
+      <h1 className="text-lg font-semibold">{title}</h1>
+      </div>
+      <p className="text-white/60">See All <ArrowRightIcon size={16} className="inline" /></p>
+    </div>
+    <div className="flex items-center gap-5 gamesStyledScroll overflow-x-scroll">
+      {imgs.map((item,index)=>{
+        return <div key={index} className="mb-2 w-[16.66%] shrink-0  p-2 rounded-md bg-[#2F2B2A]">
+          <img src={item} className="w-full h-auto rounded-md" />
+          <div className="bg-primaryWidget py-0.5 w-max px-5 mt-2 mx-auto rounded-lg text-center text-black text-sm font-bold">
+             3456
+          </div>
+        </div>
+      })}
+    </div>
+    
+  </div>)
+}

@@ -13,7 +13,7 @@ interface HomeLayoutProps {
 }
 
 const HomeLayout = ({ children }: HomeLayoutProps) => {
-  const [showDialog, setShowDialog] = useState(false);
+  const [showDialog, setShowDialog] = useState(true);
 
   const { data } = useQuery({
     queryKey: ["GET_BANNERS"],
@@ -41,16 +41,7 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
         </div>
         {children}
       </div>
-      <Dialog open={showDialog} onOpenChange={onCloseDialog}>
-        <DialogContent>
-          {data && data.ads_banner && (
-            <img
-              src={data.ads_banner.img}
-              className="h-[200px] w-full object-contain"
-            />
-          )}
-        </DialogContent>
-      </Dialog>
+     
     </div>
   );
 };
