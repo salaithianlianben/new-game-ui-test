@@ -24,6 +24,12 @@ export default {
         'primaryGradient': 'linear-gradient(180deg, #ffd962 0%, #b36901 100%)',
         'primaryWidget':"linear-gradient(180deg, #e8ce92 0%, #e8ce92 0.01%, #c39c59 100%)",
         'activeGradient': 'linear-gradient(90deg, #fbf1b8, #da9f31)',
+        'blueGradient':"linear-gradient(180deg, #46a6fe, #1248d4)",
+        'greenGradient':"linear-gradient(180deg, #1fb407, #217204);",
+        "fbGradient":"linear-gradient(135deg, rgba(248, 251, 255, .04), hsla(0, 0%, 100%, 0))",
+        "viberGradient":"linear-gradient(135deg, rgba(248, 251, 255, .04), hsla(0, 0%, 100%, 0))",
+        'teleGradient':"linear-gradient(135deg, rgba(248, 251, 255, .04), hsla(0, 0%, 100%, 0))",
+        "lineGradient":"linear-gradient(135deg, rgba(248, 251, 255, .04), hsla(0, 0%, 100%, 0));"
       },
        borderRadius: {
         lg: "20px",
