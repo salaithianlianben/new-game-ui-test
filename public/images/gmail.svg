@@ -1,0 +1,26 @@
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="gmail" filter="url(#filter0_d_5461_49452)">
+<rect x="2" y="1" width="32" height="32" rx="16" fill="white"/>
+<g id="gmail_2">
+<path id="Vector" d="M22.9507 10.7992L18.0518 14.6471L13.041 10.7992V10.8002L13.0471 10.8054V16.1935L17.9953 20.1246L22.9507 16.3453V10.7992Z" fill="#EA4335"/>
+<path id="Vector_2" d="M24.2377 9.86324L22.9512 10.7992V16.3454L26.9994 13.2171V11.3327C26.9994 11.3327 26.508 8.64128 24.2377 9.86324Z" fill="#FBBC05"/>
+<path id="Vector_3" d="M22.9512 16.3455V23.539H26.0539C26.0539 23.539 26.9368 23.4474 27.0004 22.4345V13.2173L22.9512 16.3455Z" fill="#34A853"/>
+<path id="Vector_4" d="M13.0473 23.545V16.1934L13.041 16.1882L13.0473 23.545Z" fill="#C5221F"/>
+<path id="Vector_5" d="M13.0412 10.8003L11.7617 9.86956C9.49143 8.6476 8.99902 11.338 8.99902 11.338V13.2224L13.0412 16.1884V10.8003Z" fill="#C5221F"/>
+<path id="Vector_6" d="M13.041 10.8003V16.1884L13.0473 16.1936V10.8055L13.041 10.8003Z" fill="#C5221F"/>
+<path id="Vector_7" d="M8.99902 13.2234V22.4406C9.06158 23.4546 9.94549 23.5451 9.94549 23.5451H13.0482L13.0412 16.1883L8.99902 13.2234Z" fill="#4285F4"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_5461_49452" x="0" y="0" width="36" height="36" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="1"/>
+<feGaussianBlur stdDeviation="1"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5461_49452"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_5461_49452" result="shape"/>
+</filter>
+</defs>
+</svg>
