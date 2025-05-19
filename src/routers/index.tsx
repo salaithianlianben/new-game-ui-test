@@ -13,7 +13,14 @@ import AppLayout from "../components/layout/AppLayout";
 import CardGameView from "../pages/card-game";
 import TableGameView from "../pages/table-game";
 import BingoGameView from "../pages/bingo-game";
-
+import DepositView from "../pages/deposit";
+import WithdrawlView from "../pages/withdrawl";
+import TransferView from "../pages/transfer";
+import HistoryView from "../pages/history";
+import BankingDetails from "../pages/banking-details";
+import ChangePasswordView from "../pages/change-password";
+import AccountLayout from "../components/layout/AccountLayout";
+  
 const routers = createBrowserRouter([
   {
     path: "/",
@@ -58,6 +65,40 @@ const routers = createBrowserRouter([
         path: "bingo-games",
         element: <BingoGameView />,
       },
+      {
+        path:"account",
+        element:<AccountLayout/>,
+        children:[
+           {
+        path: "deposit",
+        element: <DepositView />,
+      },
+      {
+        path: "withdrawl",
+        element: <WithdrawlView />,
+      },
+       {
+        path: "transfer",
+        element: <TransferView />,
+      },
+       {
+        path: "history",
+        element: <HistoryView />,
+      },
+       {
+        path: "profile",
+        element: <ProfileView />,
+      },
+      {
+        path: "banking-details",
+        element: <BankingDetails />,
+      },
+      {
+        path: "change-password",
+        element: <ChangePasswordView />,
+      },
+        ]
+      }
     ],
   },
   {
