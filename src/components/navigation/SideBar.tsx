@@ -1,66 +1,87 @@
-import React from 'react'
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
-import { AlignJustifyIcon, ArrowDownWideNarrowIcon, BanknoteArrowDownIcon, CircleUserRoundIcon, DiamondIcon, GemIcon, HeadsetIcon, HouseIcon, ShieldIcon, UserPlusIcon } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
-import SlotIcon from '../icons/SlotIcon'
-import LiveCasinoIcon from '../icons/LiveCasinoIcon'
-import FishingIcon from '../icons/FishingIcon'
-import TableIcon from '../icons/TableIcon'
-import RegisterIcon from '../icons/RegisterIcon'
-import LoginIcon from '../icons/LoginIcon'
-import LanguageDropdown from '../widgets/LanguageDropdown'
- const SideBar = () => {
-  const items = [
-    {id:1,name:'Home',icon:<HouseIcon/>,link:'/'},
-        {id:2,name:'Join Now',icon:<RegisterIcon className='w-6 h-6' />,link:'/'},
-    {id:3,name:'Login',icon:<LoginIcon  className='w-6 h-6' />,link:'/'},
-      // {id:4,name:'My Profile',icon:<CircleUserRoundIcon/>,link:'/'},
-        {id:5,name:'Cash In / Out',icon:<BanknoteArrowDownIcon/>,link:'/'},
-    {id:6,name:'Card Game',icon:<DiamondIcon/>,link:'/'},
-    {id:7,name:'Slot',icon:<SlotIcon className='w-6 h-6' />,link:'/'},
-    {id:8,name:'Fishing',icon:<FishingIcon className='w-6 h-6'  />,link:'/'},
-    {id:9,name:'Live casino',icon:<LiveCasinoIcon className='w-6 h-6' />,link:'/'},
-    {id:10,name:'Table',icon:<TableIcon className='w-6 h-6' />,link:'/'},
-        {id:14,name:'Bingo',icon:<TableIcon className='w-6 h-6' />,link:'/'},
-      {id:12,name:'Promotion',icon:<GemIcon/>,link:'/'},
-    {id:13,name:'Contact Us',icon:<HeadsetIcon/>,link:'/'},
 
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '../ui/sheet'
+import {
+  AlignJustifyIcon,
+  ArrowDownCircle,
+  ArrowUpCircle,
+  Repeat,
+  Clock,
+  Banknote,
+  Lock,
+  User,
+  LayoutGridIcon,
+} from 'lucide-react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import LanguageDropdown from '../widgets/LanguageDropdown'
+import { Button } from '../ui/button'
+
+const SideBar = () => {
+  const items = [
+    { id: 1, name: 'Home', icon: <LayoutGridIcon size={20} />, link: '/' },
+    { id: 2, name: 'Deposit', icon: <ArrowDownCircle size={20} />, link: '/account/deposit' },
+    { id: 3, name: 'Withdrawal', icon: <ArrowUpCircle size={20} />, link: '/account/withdrawl' },
+    { id: 4, name: 'Transfer', icon: <Repeat size={20} />, link: '/account/transfer' },
+    { id: 5, name: 'History', icon: <Clock size={20} />, link: '/account/history' },
+    { id: 6, name: 'Profile', icon: <User size={20} />, link: '/account/profile' },
+    { id: 7, name: 'Banking Detail', icon: <Banknote size={20} />, link: '/account/banking-details' },
+    { id: 8, name: 'Change Password', icon: <Lock size={20} />, link: '/account/change-password' },
   ]
-  const navigate = useNavigate();
-  const goToLink =(link:string)=>{
-    navigate(link);
+
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const goToLink = (link: string) => {
+    navigate(link)
   }
+
   return (
     <div>
       <Sheet>
-  <SheetTrigger className=' bg-activeGradient text-black p-1.5 rounded-md'>
-    <AlignJustifyIcon size={28}/>
-  </SheetTrigger>
-  <SheetContent >
-    <SheetHeader>
-      <SheetTitle >
-        LOGO
-      <div className="my-5">
-        <LanguageDropdown/>
-      </div>
-
-      </SheetTitle>
-      <SheetDescription className=''>
-       <div className="flex flex-col space-y-4">
-        {items.map((item)=>{
-          return <div onClick={()=>goToLink(item.link)} key={item.id} className='flex items-center gap-3'>
-            {item.icon}
-            <p className='text-[15px] sm:text-base'>{item.name}</p>
-          </div>
-        })}
-        
-
-       </div>
-      </SheetDescription>
-    </SheetHeader>
-  </SheetContent>
-</Sheet>
-
+        <SheetTrigger className="bg-primaryGradient text-black p-1.5 rounded-md">
+          <AlignJustifyIcon size={28} />
+        </SheetTrigger>
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle>
+              LOGO
+              <div className="mt-5">
+                <LanguageDropdown />
+              </div>
+            </SheetTitle>
+            <SheetDescription>
+              <div className="flex flex-col space-y-2 cursor-pointer">
+                {items.map((item) => {
+                  const isActive = location.pathname === item.link
+                  return (
+                    <div
+                      onClick={() => goToLink(item.link)}
+                      key={item.id}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors cursor-pointer ${
+                        isActive
+                          ? 'bg-primary/10 border border-primary'
+                          : 'hover:bg-primary/10'
+                      }`}
+                    >
+                      {item.icon}
+                      <p className="text-[15px] sm:text-base">{item.name}</p>
+                    </div>
+                  )
+                })}
+                <Button className=" !mt-8 !px-6 text-base text-black font-bold bg-primaryGradient border border-primaryGradient rounded-full">
+                  Logout
+                </Button>
+              </div>
+            </SheetDescription>
+          </SheetHeader>
+        </SheetContent>
+      </Sheet>
     </div>
   )
 }

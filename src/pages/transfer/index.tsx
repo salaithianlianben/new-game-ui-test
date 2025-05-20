@@ -16,47 +16,46 @@ const gameWallets = [
   { value: "pragmatic", label: "Pragmatic Play Wallet" },
 ];
 
+const amountOptions = [5000, 10000, 20000, 50000, 100000];
+
 const TransferView = () => {
-  const [selectedValue, setSelectedValue] = useState<number | null>(null);
+  const [amount, setAmount] = useState<number | null>(null);
   const [transferFrom, setTransferFrom] = useState<string>("");
   const [transferTo, setTransferTo] = useState<string>("");
 
+  const isFormValid = transferFrom && transferTo && amount && transferFrom !== transferTo;
+
+  const handleSubmit = () => {
+    if (!isFormValid) {
+      alert("Please fill in all fields correctly.");
+      return;
+    }
+
+    console.log({
+      from: transferFrom,
+      to: transferTo,
+      amount,
+    });
+
+    // Submit logic goes here...
+  };
+
   return (
-    <div className='!bg-primary/10 px-10 pt-10 pb-32 h-full overflow-y-scroll'>
-       <div className="my-8 flex gap-4">
-        <p className='basis-1/5'>Transfer From *</p>
-        <div className='basis-4/5'>
+    <div className="!bg-primary/10 px-4 md:px-10 pt-10 pb-32 h-full overflow-y-scroll text-sm">
+      {/* Transfer From */}
+      <div className="my-6 flex flex-col md:flex-row gap-2 md:gap-4">
+        <p className="md:basis-1/5 font-medium">Transfer From *</p>
+        <div className="md:basis-4/5 w-full">
           <Select onValueChange={setTransferFrom}>
-            <SelectTrigger className='w-full bg-primary/10 border border-primary'>
+            <SelectTrigger className="w-full bg-primary/10 border border-primary">
               <SelectValue placeholder="Select game wallet" />
             </SelectTrigger>
-            <SelectContent className='z-10 bg-black border border-primary'>
+            <SelectContent className="z-10 bg-black border border-primary">
               {gameWallets.map(wallet => (
                 <SelectItem
                   key={wallet.value}
                   value={wallet.value}
-                  className='hover:bg-primary/10'
-                >
-                  {wallet.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-        <div className="my-8 flex gap-4">
-        <p className='basis-1/5'>Transfer To *</p>
-        <div className='basis-4/5'>
-          <Select onValueChange={setTransferTo}>
-            <SelectTrigger className='w-full bg-primary/10 border border-primary'>
-              <SelectValue placeholder="Select game wallet" />
-            </SelectTrigger>
-            <SelectContent className='z-10 bg-black border border-primary'>
-              {gameWallets.map(wallet => (
-                <SelectItem
-                  key={wallet.value}
-                  value={wallet.value}
-                  className='hover:bg-primary/10'
+                  className="hover:bg-primary/10"
                 >
                   {wallet.label}
                 </SelectItem>
@@ -66,32 +65,66 @@ const TransferView = () => {
         </div>
       </div>
 
-       <div className="my-8 flex gap-4">
-        <p className='basis-1/5'>Amount *</p>
-        <div className='basis-4/5'>
+      {/* Transfer To */}
+      <div className="my-6 flex flex-col md:flex-row gap-2 md:gap-4">
+        <p className="md:basis-1/5 font-medium">Transfer To *</p>
+        <div className="md:basis-4/5 w-full">
+          <Select onValueChange={setTransferTo}>
+            <SelectTrigger className="w-full bg-primary/10 border border-primary">
+              <SelectValue placeholder="Select game wallet" />
+            </SelectTrigger>
+            <SelectContent className="z-10 bg-black border border-primary">
+              {gameWallets.map(wallet => (
+                <SelectItem
+                  key={wallet.value}
+                  value={wallet.value}
+                  className="hover:bg-primary/10"
+                >
+                  {wallet.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+
+      {/* Amount */}
+      <div className="my-6 flex flex-col md:flex-row gap-2 md:gap-4">
+        <p className="md:basis-1/5 font-medium">Amount *</p>
+        <div className="md:basis-4/5 w-full">
           <Input
-            value={selectedValue ?? ''}
-            onChange={(e) => setSelectedValue(Number(e.target.value))}
-            className='w-full bg-primary/10 border border-primary'
-            placeholder='Minimum: 3000'
+            type="number"
+            value={amount ?? ''}
+            onChange={(e) => setAmount(Number(e.target.value))}
+            className="w-full bg-primary/10 border border-primary"
+            placeholder="Minimum: 3000"
+            min={3000}
           />
-          <div className="flex items-center my-8 gap-4 flex-wrap">
-            {[5000, 10000, 20000, 50000, 100000].map((item, id) => (
+
+          <div className="flex flex-wrap gap-3 mt-6">
+            {amountOptions.map((value) => (
               <Button
-                onClick={() => setSelectedValue(item)}
-                key={id}
-                className='!font-normal text-sm h-max rounded-md py-2 px-4 bg-primary/10 border border-primary'
+                key={value}
+                onClick={() => setAmount(value)}
+                className="!font-normal text-sm h-max py-2 px-4 bg-primary/10 border border-primary"
               >
-                {item}
+                {value}
               </Button>
             ))}
           </div>
         </div>
       </div>
 
-       <Button className='flex items-center justify-center py-1 px-8 text-base text-black mx-auto'>
-        Submit
-      </Button>
+      {/* Submit Button */}
+      <div className="mt-10 flex justify-center">
+        <Button
+          disabled={!isFormValid}
+          onClick={handleSubmit}
+          className="py-2 px-8 text-base text-black bg-primaryGradient disabled:opacity-50"
+        >
+          Submit
+        </Button>
+      </div>
     </div>
   );
 };

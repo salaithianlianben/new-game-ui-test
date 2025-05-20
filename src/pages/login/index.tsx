@@ -1,3 +1,5 @@
+  // @ts-nocheck
+
 import { LockIcon, UserIcon } from "lucide-react";
 import { Card, CardContent } from "../../components/ui/card";
 import { InputWithIcon } from "../../components/widgets/InputWithIcon";
@@ -42,7 +44,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   // Define form submission handler
-  const onSubmit = (values) => {
+   const onSubmit = (values) => {
     console.log(values);
     // Add your login logic here
   };
