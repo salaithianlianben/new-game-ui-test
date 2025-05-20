@@ -217,4 +217,46 @@ export const translations: Translations = {
     zh: "Register",
     th: "Register",
   },
+  createAccount: {
+    my: "Create Account",
+    en: "Create Account",
+    zh: "Create Account",
+    th: "Create Account",
+  },
+  enterMobileNumber: {
+    en: "Enter mobile number",
+    zh: "Enter mobile number",
+    my: "ဖုန်းနံပါတ်ထည့်ရန်",
+    th: "Enter mobile number"
+  },
+  enterName: {
+    en: "Enter username",
+    zh: "Enter username",
+    my: "အကောင့်အမည်ထည့်ရန်",
+    th: "Enter username"
+  },
+  enterPassword: {
+    en: "Enter password",
+    th: "Enter password",
+    my: "လျှို့ဝှက်ကုဒ်ထည့်ရန်",
+    zh: "Enter password",
+  },
+  enterReferralCode: {
+    en: "Enter referral code",
+    zh: "Enter referral code",
+    th: "Enter referral code",
+    my: "ရည်ညွှန်းကုဒ်ထည့်ရန်",
+  },
+  processing: {
+    en: "Processing...",
+    my: "Processing...",
+    zh: "Processing...",
+    th: "Processing..."
+  },
+  referral_code: {
+    en: "Referral code",
+    zh: "Referral code",
+    my: "Referral code",
+    th: "Referral code",
+  }
 };
