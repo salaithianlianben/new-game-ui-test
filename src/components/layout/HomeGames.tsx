@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import cHome from "../../../public/icons/cHome.png";
 import card from "../../../public/icons/cCard.png";
 import cSlot from "../../../public/icons/cSlot.png";
@@ -18,32 +18,36 @@ const HomeGames = () => {
     { id: 5, name: "Table", icon: cCasino, link: "/" },
     { id: 16, name: "Bingo", icon: cSport, link: "/" },
   ];
+  const [selected,setSelected]=useState(gameCategories[0].id);
 
   return (
-    <div className="lg:px-20">
-      <div className="pt-2 px-5 styled-scroll overflow-x-scroll flex justify-between lg:justify-center items-center bg-primary-radial bg-primary-radial-alt gap-8 lg:gap-16 lg:hidden">
-        {gameCategories.map((item) => {
-          return (
-            <div
-              key={item.id}
-              className={
-                item.id === 0 ? " border-b-4 border-primary pb-1" : "pb-2"
-              }
-            >
-              <img
-                className="w-8 h-8 mx-auto"
-                src={item.icon}
-                alt={item.name}
-              />
-              <p className="mt-0.5 text-nowrap">{item.name}</p>
-            </div>
-          );
-        })}
+    <div className=" xl:px-20">
+     <div className="pt-2 lg:px-5 styled-scroll overflow-x-scroll flex justify-between lg:justify-center items-center bg-primary-radial bg-primary-radial-alt lg:gap-16 lg:hidden">
+  {gameCategories.map((item) => {
+    return (
+      <div
+        key={item.id}
+        className={`
+          ${item.id === selected ? "border-b-4 border-primary/80 bg-primary/10 pb-1" : "pb-2"} 
+          pt-2
+          flex flex-col items-center
+          basis-[80px] sm:basis-[100px] flex-shrink-0
+          lg:basis-[14.28%]
+        `}
+        onClick={() => setSelected(item.id)}
+      >
+        <img className="w-8 h-8 mx-auto" src={item.icon} alt={item.name} />
+        <p className="mt-0.5 text-nowrap">{item.name}</p>
       </div>
+    );
+  })}
+</div>
+<div className="px-5">
       <DemoGameGrid title="Most Popular" icon={<TrophyIcon/>} iconBg="#D4B374" />
       <DemoGameGrid title="Recent Big Wins" icon={<ThumbsUpIcon/>} iconBg="#A675FB" />
     <DemoGameGrid title="Slot Games" icon={<SparklesIcon/>} iconBg="#3A6BFF" />
       <DemoGameGrid title="Live Casino Games" icon={<ClubIcon/>} iconBg="#FF00C2" />
+      </div>
     </div>
   );
 };
@@ -78,14 +82,29 @@ const DemoGameGrid = ({title,icon,iconBg}:Props)=>{
       </div>
       <p className="text-white/60">See All <ArrowRightIcon size={16} className="inline" /></p>
     </div>
-    <div className="flex items-center gap-5 gamesStyledScroll overflow-x-scroll">
+    <div className="flex items-center gap-2 sm:gap-5 gamesStyledScroll overflow-x-scroll">
       {imgs.map((item,index)=>{
-        return <div key={index} className="mb-2 w-[16.66%] shrink-0  p-2 rounded-md bg-[#2F2B2A]">
-          <img src={item} className="w-full h-auto rounded-md" />
-          <div className="bg-primaryWidget py-0.5 w-max px-5 mt-2 mx-auto rounded-lg text-center text-black text-sm font-bold">
-             3456
-          </div>
-        </div>
+        // return <div key={index} className="mb-2 w-[35%] sm:w-[25%] md:w-[20%] lg:w-[16.66%] shrink-0  p-2 rounded-md bg-[#2F2B2A]">
+        //   <img src={item} className="w-full h-auto rounded-md" />
+        //   <div className="bg-primaryWidget py-0.5 w-max px-5 mt-2 mx-auto rounded-lg text-center text-black text-sm font-bold">
+        //      3456
+        //   </div>
+        // </div>
+        return <div
+  key={index}
+  className="mb-2 w-[35%] sm:w-[25%] md:w-[20%] lg:w-[16.66%] shrink-0 p-2 rounded-md bg-[#2F2B2A]"
+>
+  <img src={item} className="w-full h-auto rounded-md" />
+  <div className="rounded-b-md">
+    <div
+      className="flex  mt-2 justify-center mx-auto items-center rounded-md border border-primary/20 bg-primary/10 px-4 py-1 w-max text-sm font-semibold text-primary hover:bg-primary/20 transition-colors select-none"
+      
+       
+    >
+      +3456
+    </div>
+  </div>
+</div>
       })}
     </div>
     

@@ -52,7 +52,7 @@ const ChangePasswordView = () => {
 
          <Button
           type='submit'
-          className='mt-4 bg-primaryGradient border border-primary text-white px-6 py-2'
+          className='mt-4 bg-primaryGradient border border-primary text-black px-6 py-2'
         >
           Submit
         </Button>

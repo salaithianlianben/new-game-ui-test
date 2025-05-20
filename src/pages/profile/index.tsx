@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
- 
- 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Input } from '../../components/ui/input';
@@ -17,10 +15,11 @@ const ProfileView = () => {
   const [birthDate, setBirthDate] = useState<Date | null>(null);
 
   return (
-    <div className='!bg-primary/10 px-10 pt-10 pb-32 h-full overflow-y-scroll'>
-       <div className='my-8 flex gap-4'>
-        <p className='basis-1/5'>Full Name *</p>
-        <div className='basis-4/5'>
+    <div className='!bg-primary/10 px-4 sm:px-6 md:px-10 pt-10 pb-32 h-full overflow-y-auto'>
+      {/* Full Name */}
+      <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
+        <p className='md:basis-1/5 font-medium'>Full Name *</p>
+        <div className='md:basis-4/5'>
           <Input
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
@@ -30,9 +29,10 @@ const ProfileView = () => {
         </div>
       </div>
 
-       <div className='my-8 flex gap-4'>
-        <p className='basis-1/5'>E-mail *</p>
-        <div className='basis-4/5'>
+      {/* Email */}
+      <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
+        <p className='md:basis-1/5 font-medium'>E-mail *</p>
+        <div className='md:basis-4/5'>
           <Input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -41,9 +41,11 @@ const ProfileView = () => {
           />
         </div>
       </div>
-       <div className='my-8 flex gap-4'>
-        <p className='basis-1/5'>Contact No *</p>
-        <div className='basis-4/5'>
+
+      {/* Contact */}
+      <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
+        <p className='md:basis-1/5 font-medium'>Contact No *</p>
+        <div className='md:basis-4/5'>
           <Input
             value={contact}
             onChange={(e) => setContact(e.target.value)}
@@ -53,9 +55,10 @@ const ProfileView = () => {
         </div>
       </div>
 
-       <div className='my-8 flex gap-4'>
-        <p className='basis-1/5'>Gender *</p>
-        <div className='basis-4/5'>
+      {/* Gender */}
+      <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
+        <p className='md:basis-1/5 font-medium'>Gender *</p>
+        <div className='md:basis-4/5'>
           <Select onValueChange={setGender}>
             <SelectTrigger className='w-full bg-primary/10 border border-primary'>
               <SelectValue placeholder="Select gender" />
@@ -69,9 +72,10 @@ const ProfileView = () => {
         </div>
       </div>
 
-       <div className='my-8 flex gap-4'>
-        <p className='basis-1/5'>Birth Date *</p>
-        <div className='basis-4/5'>
+      {/* Birth Date */}
+      <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
+        <p className='md:basis-1/5 font-medium'>Birth Date *</p>
+        <div className='md:basis-4/5'>
           <DatePicker
             selected={birthDate}
             onChange={(date) => setBirthDate(date)}
@@ -82,9 +86,12 @@ const ProfileView = () => {
         </div>
       </div>
 
-       <Button className='flex items-center justify-center py-1 px-8 text-base text-black mx-auto'>
-        Submit
-      </Button>
+      {/* Submit */}
+      <div className='mt-10 flex justify-center'>
+        <Button className='py-2 px-10 text-base text-black'>
+          Submit
+        </Button>
+      </div>
     </div>
   );
 };

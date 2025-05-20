@@ -32,7 +32,6 @@ const BankingDetails = () => {
   const [accountNumber, setAccountNumber] = useState('');
   const [bankName, setBankName] = useState<string | null>(null);
 
-  // ✅ Initial dummy data
   const [bankRecords, setBankRecords] = useState([
     {
       bank: 'KBZ Bank',
@@ -65,17 +64,18 @@ const BankingDetails = () => {
       },
     ]);
 
-    // Clear inputs
     setAccountName('');
     setAccountNumber('');
     setBankName(null);
   };
 
   return (
-    <div className='!bg-primary/10 px-10 pt-10 pb-32 h-full overflow-y-scroll  space-y-8 '>
-       <div className="flex gap-4 items-center">
-        <p className='basis-1/5'>Bank Name *</p>
-        <div className='basis-4/5'>
+    <div className='!bg-primary/10 px-4 sm:px-6 md:px-10 pt-10 pb-32 h-full overflow-y-auto space-y-8'>
+
+      {/* Bank Name */}
+      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+        <p className='w-full md:w-1/5'>Bank Name *</p>
+        <div className='w-full md:w-4/5'>
           <Select value={bankName ?? ''} onValueChange={setBankName}>
             <SelectTrigger className='w-full bg-primary/10 border border-primary rounded-md'>
               <SelectValue placeholder="Select bank" />
@@ -95,32 +95,36 @@ const BankingDetails = () => {
         </div>
       </div>
 
-       <div className="flex gap-4 items-center">
-        <p className='basis-1/5'>Bank Account Name *</p>
+      {/* Account Name */}
+      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+        <p className='w-full md:w-1/5'>Bank Account Name *</p>
         <Input
           value={accountName}
           onChange={(e) => setAccountName(e.target.value)}
           placeholder='Enter account holder name'
-          className='basis-4/5 bg-primary/10 border border-primary rounded-md'
+          className='w-full md:w-4/5 bg-primary/10 border border-primary rounded-md'
         />
       </div>
 
-       <div className="flex gap-4 items-center">
-        <p className='basis-1/5'>Bank Account Number *</p>
+      {/* Account Number */}
+      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+        <p className='w-full md:w-1/5'>Bank Account Number *</p>
         <Input
           value={accountNumber}
           onChange={(e) => setAccountNumber(e.target.value)}
           placeholder='Enter account number'
-          className='basis-4/5 bg-primary/10 border border-primary rounded-md'
+          className='w-full md:w-4/5 bg-primary/10 border border-primary rounded-md'
         />
       </div>
 
-       <Button onClick={handleSubmit} className='mt-6 mx-auto block text-black px-8'>
+      {/* Submit */}
+      <Button onClick={handleSubmit} className='mt-6 mx-auto block text-black px-8'>
         Submit
       </Button>
 
-       <div className='mt-10 rounded-xl overflow-hidden border border-primary'>
-        <Table className='bg-black/20 text-white'>
+      {/* Table */}
+      <div className='mt-10 rounded-xl overflow-x-auto border border-primary'>
+        <Table className='min-w-[600px] bg-black/20 text-white'>
           <TableHeader className='bg-primary/20 text-white'>
             <TableRow>
               <TableHead className='text-white'>Bank Name</TableHead>
