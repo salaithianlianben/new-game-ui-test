@@ -42,7 +42,7 @@ const GameCategoriesLg = () => {
             `}
             role="tab"
           >
-            <img src={item.icon} alt={`${item.name} icon`} className="w-8 h-8" />
+            {/* <img src={item.icon} alt={`${item.name} icon`} className="w-8 h-8" /> */}
             <span>{item.name}</span>
           </button>
         );

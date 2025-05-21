@@ -20,6 +20,7 @@ import HistoryView from "../pages/history";
 import BankingDetails from "../pages/banking-details";
 import ChangePasswordView from "../pages/change-password";
 import AccountLayout from "../components/layout/AccountLayout";
+import GamesView from "../pages/games";
 
 const routers = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const routers = createBrowserRouter([
       {
         path: "bingo-games",
         element: <BingoGameView />,
+      },
+       {
+        path: "games",
+        element: <GamesView />,
       },
       {
         path: "account",

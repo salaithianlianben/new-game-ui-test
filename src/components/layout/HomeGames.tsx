@@ -32,11 +32,12 @@ const HomeGames = () => {
           pt-2
           flex flex-col items-center
           basis-[80px] sm:basis-[100px] flex-shrink-0
-          lg:basis-[14.28%]
+          lg:basis-[14.28%] h-[70px]  justify-center
         `}
         onClick={() => setSelected(item.id)}
       >
-        <img className="w-8 h-8 mx-auto" src={item.icon} alt={item.name} />
+        
+        {/* <img className="w-8 h-8 mx-auto" src={item.icon} alt={item.name} /> */}
         <p className="mt-0.5 text-nowrap">{item.name}</p>
       </div>
     );
@@ -92,12 +93,13 @@ const DemoGameGrid = ({title,icon,iconBg}:Props)=>{
         // </div>
         return <div
   key={index}
-  className="mb-2 w-[35%] sm:w-[25%] md:w-[20%] lg:w-[16.66%] shrink-0 p-2 rounded-md bg-[#2F2B2A]"
+  // bg-[#2F2B2A]
+  className="mb-2 w-[35%] sm:w-[25%] md:w-[20%] lg:w-[16.66%] shrink-0 p-2 rounded-md bg-primary/10 border border-primary"
 >
   <img src={item} className="w-full h-auto rounded-md" />
   <div className="rounded-b-md">
     <div
-      className="flex  mt-2 justify-center mx-auto items-center rounded-md border border-primary/20 bg-primary/10 px-4 py-1 w-max text-sm font-semibold text-primary hover:bg-primary/20 transition-colors select-none"
+      className="flex  mt-2 justify-center mx-auto items-center rounded-md border border-primary/20 bg-activeGradient px-4 py-1 w-max text-sm font-semibold text-black hover:bg-primary/20 transition-colors select-none"
       
        
     >

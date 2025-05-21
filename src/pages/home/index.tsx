@@ -7,6 +7,7 @@ import { Button } from "../../components/ui/button";
 import Ads from "../../components/widgets/Ads";
 import GameCategoriesLg from "../../components/widgets/GameCategoriesLg";
 import BannerText from "../../components/layout/BannerText";
+import DailyBoard from "../../components/widgets/DailyBoard";
 
 const HomePage = () => {
   
@@ -18,6 +19,7 @@ const HomePage = () => {
       <div className="p-4">
         <BannerText/>
       </div>
+      <DailyBoard/>
       <HomeGames />
     </div>
   );
