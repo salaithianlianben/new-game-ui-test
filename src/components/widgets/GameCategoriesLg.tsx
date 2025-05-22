@@ -6,6 +6,9 @@ import cSlot from "../../../public/icons/cSlot.png";
 import cFishing from "../../../public/icons/cFishing.png";
 import cCasino from "../../../public/icons/cCasino.png";
 import cSport from "../../../public/icons/cSport.png";
+import { HeartIcon } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Tabs, TabsList, TabsTrigger } from '../ui/tabs';
 
 const gameCategories = [
   { id: 0, name: "Home", icon: cHome, link: "/" },
@@ -19,34 +22,38 @@ const gameCategories = [
 
 const GameCategoriesLg = () => {
   const [selected, setSelected] = useState(0);
-
+  const navigate = useNavigate();
+  const goToLink= (link:string)=>{
+    return navigate(link);
+  }
   return (
-    <nav className="hidden lg:flex space-x-6" role="tablist" aria-label="Game categories">
+    <nav className="hidden lg:block px-5 py-2.5" role="tablist" aria-label="Game categories">
+      <div className="lg:flex space-x-2 rounded-md py-2 px-6 bg-black backdrop-blur-lg">
+         
+           <Tabs defaultValue={selected.toString()} className="w-max">
+                <TabsList className=""> 
       {gameCategories.map((item) => {
         const isSelected = selected === item.id;
-        return (
-          <button
-            key={item.id}
-            onClick={() => setSelected(item.id)}
-            aria-current={isSelected ? 'true' : undefined}
-            className={`
-              flex items-center gap-3 border-b-2 px-6 py-3
-              text-base font-semibold
-              transition-colors duration-200
-              focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
-              ${
-                isSelected
-                  ? 'border-primary text-primary bg-primary/10'
-                  : 'border-transparent text-muted-foreground hover:border-primary hover:text-primary'
-              }
-            `}
-            role="tab"
-          >
-            {/* <img src={item.icon} alt={`${item.name} icon`} className="w-8 h-8" /> */}
-            <span>{item.name}</span>
-          </button>
-        );
-      })}
+        return ( <TabsTrigger
+        onClick={()=>goToLink('/games')}
+                    value={item.id.toString()}
+                    className="transition-all px-6 text-[15px] ease-in-out duration-150"
+                  >
+                   {item.name}
+                  </TabsTrigger>)
+                  
+              
+       
+        
+       })}
+        </TabsList>
+               </Tabs>
+
+       <div className="cursor-pointer hover:scale-105 transition-all ease-in-out duration-200 bg-primaryGradient text-black font-semibold py-2 px-5 rounded-md  flex items-center gap-2">
+          <HeartIcon/>
+          <p>Game Logs</p>
+         </div>
+      </div>
     </nav>
   );
 };

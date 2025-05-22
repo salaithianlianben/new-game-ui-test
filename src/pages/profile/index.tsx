@@ -16,8 +16,7 @@ const ProfileView = () => {
 
   return (
     <div className='!bg-primary/10 px-4 sm:px-6 md:px-10 pt-10 pb-32 h-full overflow-y-auto'>
-      {/* Full Name */}
-      <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
+       <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
         <p className='md:basis-1/5 font-medium'>Full Name *</p>
         <div className='md:basis-4/5'>
           <Input
@@ -29,8 +28,7 @@ const ProfileView = () => {
         </div>
       </div>
 
-      {/* Email */}
-      <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
+       <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
         <p className='md:basis-1/5 font-medium'>E-mail *</p>
         <div className='md:basis-4/5'>
           <Input
@@ -42,8 +40,7 @@ const ProfileView = () => {
         </div>
       </div>
 
-      {/* Contact */}
-      <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
+       <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
         <p className='md:basis-1/5 font-medium'>Contact No *</p>
         <div className='md:basis-4/5'>
           <Input
@@ -55,8 +52,7 @@ const ProfileView = () => {
         </div>
       </div>
 
-      {/* Gender */}
-      <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
+       <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
         <p className='md:basis-1/5 font-medium'>Gender *</p>
         <div className='md:basis-4/5'>
           <Select onValueChange={setGender}>
@@ -72,8 +68,7 @@ const ProfileView = () => {
         </div>
       </div>
 
-      {/* Birth Date */}
-      <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
+       <div className='my-6 flex flex-col md:flex-row gap-2 md:gap-4'>
         <p className='md:basis-1/5 font-medium'>Birth Date *</p>
         <div className='md:basis-4/5'>
           <DatePicker
@@ -86,8 +81,7 @@ const ProfileView = () => {
         </div>
       </div>
 
-      {/* Submit */}
-      <div className='mt-10 flex justify-center'>
+       <div className='mt-10 flex justify-center'>
         <Button className='py-2 px-10 text-base text-black'>
           Submit
         </Button>

@@ -37,7 +37,7 @@ const HomeGames = () => {
         onClick={() => setSelected(item.id)}
       >
         
-        {/* <img className="w-8 h-8 mx-auto" src={item.icon} alt={item.name} /> */}
+        <img className="w-8 h-8 mx-auto" src={item.icon} alt={item.name} />
         <p className="mt-0.5 text-nowrap">{item.name}</p>
       </div>
     );

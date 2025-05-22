@@ -1,3 +1,4 @@
+
 import { useState, useRef } from 'react';
 import { Search, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
@@ -16,8 +17,11 @@ const AnimatedSearchInput = () => {
   return (
     <div
       className={cn(
-        'flex items-center border border-primary/30 bg-primary/5 rounded-md px-3 py-2 space-x-2 transition-all duration-300',
-        focused ? 'w-80 shadow-md ring-2 ring-primary/50' : 'w-60'
+        'flex items-center rounded-md px-3 py-2 space-x-2 transition-all duration-300 ease-in-out	',
+        'bg-primary/5',
+        focused
+          ? 'w-80 shadow-md ring-2 ring-primary/80 border border-gray-300 shadow-md'
+          : 'w-60 border border-primary/30'
       )}
     >
       <Search className="h-4 w-4 text-primary" />
@@ -32,20 +36,22 @@ const AnimatedSearchInput = () => {
         onBlur={() => setFocused(false)}
       />
 
-     {value && (
-  <button
-    type="button"
-    onMouseDown={(e) => {
-      e.preventDefault();  
-      clearInput();
-    }}
-    className="text-muted-foreground hover:text-primary transition"
-  >
-    <X className="w-4 h-4" />
-  </button>
-)}
+      {value && (
+        <button
+          type="button"
+          onMouseDown={(e) => {
+            e.preventDefault();
+            clearInput();
+          }}
+          className="text-muted-foreground hover:text-primary transition"
+        >
+          <X className="w-4 h-4" />
+        </button>
+      )}
     </div>
   );
 };
 
 export default AnimatedSearchInput;
+
+ 

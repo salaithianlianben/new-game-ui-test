@@ -9,8 +9,7 @@ const ChangePasswordView = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Add logic here (validation, API call, etc.)
-    console.log({ currentPassword, newPassword, confirmPassword });
+     console.log({ currentPassword, newPassword, confirmPassword });
   };
 
   return (

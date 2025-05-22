@@ -27,8 +27,7 @@ const TransferView = () => {
 
   const handleSubmit = () => {
     if (!isFormValid) {
-      alert("Please fill in all fields correctly.");
-      return;
+       return;
     }
 
     console.log({
@@ -37,13 +36,11 @@ const TransferView = () => {
       amount,
     });
 
-    // Submit logic goes here...
-  };
+   };
 
   return (
     <div className="!bg-primary/10 px-4 md:px-10 pt-10 pb-32 h-full overflow-y-scroll text-sm">
-      {/* Transfer From */}
-      <div className="my-6 flex flex-col md:flex-row gap-2 md:gap-4">
+       <div className="my-6 flex flex-col md:flex-row gap-2 md:gap-4">
         <p className="md:basis-1/5 font-medium">Transfer From *</p>
         <div className="md:basis-4/5 w-full">
           <Select onValueChange={setTransferFrom}>
@@ -65,8 +62,7 @@ const TransferView = () => {
         </div>
       </div>
 
-      {/* Transfer To */}
-      <div className="my-6 flex flex-col md:flex-row gap-2 md:gap-4">
+       <div className="my-6 flex flex-col md:flex-row gap-2 md:gap-4">
         <p className="md:basis-1/5 font-medium">Transfer To *</p>
         <div className="md:basis-4/5 w-full">
           <Select onValueChange={setTransferTo}>
@@ -88,8 +84,7 @@ const TransferView = () => {
         </div>
       </div>
 
-      {/* Amount */}
-      <div className="my-6 flex flex-col md:flex-row gap-2 md:gap-4">
+       <div className="my-6 flex flex-col md:flex-row gap-2 md:gap-4">
         <p className="md:basis-1/5 font-medium">Amount *</p>
         <div className="md:basis-4/5 w-full">
           <Input
@@ -115,8 +110,7 @@ const TransferView = () => {
         </div>
       </div>
 
-      {/* Submit Button */}
-      <div className="mt-10 flex justify-center">
+       <div className="mt-10 flex justify-center">
         <Button
           disabled={!isFormValid}
           onClick={handleSubmit}
