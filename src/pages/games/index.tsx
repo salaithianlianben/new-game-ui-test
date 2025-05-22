@@ -1,5 +1,6 @@
 import React from 'react'
 import AnimatedSearchInput from '../../components/widgets/AnimatedSearchInput'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
 
 const GamesView = () => {
      const gameProviders = [
@@ -101,14 +102,29 @@ const GamesView = () => {
   return (
     <div className='px-5 xl:px-20 py-5'>
       <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-10">
-         <button
-        className="flex items-center space-x-6 rounded-full sm:rounded-lg border-2 border-primary/60 px-3 sm:px-5 py-1.5 text-[13px] sm:text-sm font-bold text-white  bg-black transition-colors"
-        type="button"
-      >
-         <span className='hover:text-primary/70 transition-all ease-in-out duration-150'>All Games</span>
-         <span className='hover:text-primary/70 transition-all ease-in-out duration-150'>Popular Games</span>
-         <span className='hover:text-primary/70 transition-all ease-in-out duration-150'>New Games</span>
-      </button>
+        
+       <Tabs defaultValue="all" className="w-max">
+      <TabsList className="">
+        <TabsTrigger
+          value="all"
+          className="transition-all ease-in-out duration-150"
+        >
+          All Games
+        </TabsTrigger>
+        <TabsTrigger
+          value="popular"
+          className=" transition-all ease-in-out duration-150"
+        >
+          Popular Games
+        </TabsTrigger>
+        <TabsTrigger
+          value="new"
+          className="transition-all ease-in-out duration-150"
+        >
+          New Games
+        </TabsTrigger>
+      </TabsList>
+     </Tabs>
       <AnimatedSearchInput/>
       </div>
       <div className='my-6 cursor-pointer flex items-center gap-1.5 sm:gap-3 styled-scroll overflow-x-scroll'>

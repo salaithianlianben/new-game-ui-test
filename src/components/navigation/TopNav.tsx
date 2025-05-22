@@ -3,9 +3,10 @@ import { Button } from '../ui/button'
 import SideBar from './SideBar'
 import logo from '/images/logo.png'
 import coin from '/images/topNavCoin.svg'
-import { CoinsIcon, EllipsisVertical, RefreshCcw, RotateCwIcon, User } from 'lucide-react'
+import { BellIcon, CoinsIcon, EllipsisVertical, RefreshCcw, RotateCwIcon, User } from 'lucide-react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import LanguageDropdown from '../widgets/LanguageDropdown'
+import Notifications from '../widgets/Notifications'
 const TopNav = () => {
   const userMenuItems = [
   {
@@ -42,11 +43,11 @@ const goTo =(link:string)=>{
         <img src={logo} className='w-[80px] h-[80px] object-contain' />
       </div>
       <div>
-        <div  className="flex items-center gap-2 md:gap-4 lg:gap-8">
-        <Button  onClick={()=>goTo('/login')} className='text-sm text-white font-medium bg-black border border-[#EDCE7E] !px-8'>
+        <div  className="flex items-center gap-2 md:gap-4 ">
+        <Button  onClick={()=>goTo('/login')} className='!text-xs text-white font-medium bg-black border border-[#EDCE7E] !px-6'>
         LOGIN
       </Button>
-      <Button onClick={()=>goTo('/register')} className='!px-6 text-sm text-black font-medium bg-activeGradient  border border-white'>
+      <Button onClick={()=>goTo('/register')} className='!px-4 !text-xs text-black font-medium bg-activeGradient  border border-white'>
         JOIN NOW
       </Button>
       {/* <div className="hidden lg:flex gap-3">
@@ -66,7 +67,7 @@ const goTo =(link:string)=>{
       <div className="flex items-center gap-1">
         <p className="font-semibold">Welcome</p>
         <p className="text-primary font-semibold">devtestabc</p>
-      </div>
+        </div>
 
       <button
         className="flex items-center space-x-2 rounded-md border border-primary/20 bg-primary/5 px-5 py-1.5 text-sm font-bold text-primary hover:bg-primary/10 transition-colors"
@@ -86,8 +87,10 @@ const goTo =(link:string)=>{
     </div>
 
       
-      
+       <div className="flex items-center gap-5">
+         <Notifications/>
       <SideBar/>
+       </div>
       </div>
       <div className='hidden lg:flex items-center justify-end gap-4 mt-4'>
         {userMenuItems.map((item)=>{
@@ -105,3 +108,5 @@ const goTo =(link:string)=>{
 }
 
 export default TopNav
+
+

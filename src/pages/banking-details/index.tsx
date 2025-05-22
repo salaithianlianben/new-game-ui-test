@@ -51,29 +51,13 @@ const BankingDetails = () => {
   ]);
 
   const handleSubmit = () => {
-    if (!bankName || !accountName || !accountNumber) return;
-
-    const bankLabel = bankOptions.find((b) => b.value === bankName)?.label || bankName;
-
-    setBankRecords((prev) => [
-      ...prev,
-      {
-        bank: bankLabel,
-        accountName,
-        accountNumber,
-      },
-    ]);
-
-    setAccountName('');
-    setAccountNumber('');
-    setBankName(null);
+  
   };
 
   return (
     <div className='!bg-primary/10 px-4 sm:px-6 md:px-10 pt-10 pb-32 h-full overflow-y-auto space-y-8'>
 
-      {/* Bank Name */}
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
         <p className='w-full md:w-1/5'>Bank Name *</p>
         <div className='w-full md:w-4/5'>
           <Select value={bankName ?? ''} onValueChange={setBankName}>
@@ -95,8 +79,7 @@ const BankingDetails = () => {
         </div>
       </div>
 
-      {/* Account Name */}
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
         <p className='w-full md:w-1/5'>Bank Account Name *</p>
         <Input
           value={accountName}
@@ -106,8 +89,7 @@ const BankingDetails = () => {
         />
       </div>
 
-      {/* Account Number */}
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+       <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
         <p className='w-full md:w-1/5'>Bank Account Number *</p>
         <Input
           value={accountNumber}
@@ -117,13 +99,11 @@ const BankingDetails = () => {
         />
       </div>
 
-      {/* Submit */}
-      <Button onClick={handleSubmit} className='mt-6 mx-auto block text-black px-8'>
+       <Button onClick={handleSubmit} className='mt-6 mx-auto block text-black px-8'>
         Submit
       </Button>
 
-      {/* Table */}
-      <div className='mt-10 rounded-xl overflow-x-auto border border-primary'>
+       <div className='mt-10 rounded-xl overflow-x-auto border border-primary'>
         <Table className='min-w-[600px] bg-black/20 text-white'>
           <TableHeader className='bg-primary/20 text-white'>
             <TableRow>

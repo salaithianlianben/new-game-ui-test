@@ -56,8 +56,7 @@ const HistoryView = () => {
   return (
     <div className='!bg-primary/10 px-4 md:px-10 pt-10 pb-32 h-full overflow-y-scroll'>
   <div className="container max-w-screen-lg mx-auto">
-    {/* Report Type */}
-    <div className="my-8 flex flex-col md:flex-row gap-4">
+     <div className="my-8 flex flex-col md:flex-row gap-4">
       <p className='md:basis-1/5'>Report Type *</p>
       <div className='md:basis-4/5 w-full'>
         <Select onValueChange={setReportType}>
@@ -79,8 +78,7 @@ const HistoryView = () => {
       </div>
     </div>
 
-    {/* Date Filter */}
-    <div className="my-8 flex flex-col md:flex-row gap-4">
+     <div className="my-8 flex flex-col md:flex-row gap-4">
       <p className='md:basis-1/5'>Date *</p>
       <div className='md:basis-4/5 w-full flex flex-col sm:flex-row gap-4'>
         <DatePicker
@@ -101,13 +99,11 @@ const HistoryView = () => {
       </div>
     </div>
 
-    {/* Submit Button */}
-    <Button className='flex items-center justify-center py-2 px-8 text-base text-black mx-auto'>
+     <Button className='flex items-center justify-center py-2 px-8 text-base text-black mx-auto'>
       Submit
     </Button>
 
-    {/* Table */}
-    <div className="mt-10 rounded-xl overflow-x-auto border border-primary/50">
+     <div className="mt-10 rounded-xl overflow-x-auto border border-primary/50">
       <Table className="min-w-full bg-black/20 text-white">
         <TableHeader className="bg-primary/10">
           <TableRow>
@@ -129,9 +125,7 @@ const HistoryView = () => {
         </TableBody>
       </Table>
     </div>
-
-    {/* Pagination */}
-    <div className="flex flex-wrap justify-center gap-2 mt-4 mb-6">
+     <div className="flex flex-wrap justify-center gap-2 mt-4 mb-6">
       <Button
         variant="outline"
         className={`border border-white text-white px-4 py-2 h-max text-sm !font-normal rounded-md transition-colors ${
