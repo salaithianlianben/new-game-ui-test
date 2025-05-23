@@ -22,7 +22,7 @@ const HomeGames = () => {
 
   return (
     <div className=" xl:px-20">
-     <div className="pt-2 lg:px-5 styled-scroll overflow-x-scroll flex justify-between lg:justify-center items-center bg-primary-radial bg-primary-radial-alt lg:gap-16 lg:hidden">
+     <div className="sticky bg-secondary top-0 left-0 right-0 pt-2 lg:px-5 styled-scroll overflow-x-scroll flex justify-between lg:justify-center items-center bg-primary-radial bg-primary-radial-alt lg:gap-16 lg:hidden">
   {gameCategories.map((item) => {
     return (
       <div
@@ -85,16 +85,9 @@ const DemoGameGrid = ({title,icon,iconBg}:Props)=>{
     </div>
     <div className="flex items-center gap-2 sm:gap-5 gamesStyledScroll overflow-x-scroll">
       {imgs.map((item,index)=>{
-        // return <div key={index} className="mb-2 w-[35%] sm:w-[25%] md:w-[20%] lg:w-[16.66%] shrink-0  p-2 rounded-md bg-[#2F2B2A]">
-        //   <img src={item} className="w-full h-auto rounded-md" />
-        //   <div className="bg-primaryWidget py-0.5 w-max px-5 mt-2 mx-auto rounded-lg text-center text-black text-sm font-bold">
-        //      3456
-        //   </div>
-        // </div>
-        return <div
+         return <div
   key={index}
-  // bg-[#2F2B2A]
-  className="mb-2 w-[35%] sm:w-[25%] md:w-[20%] lg:w-[16.66%] shrink-0 p-2 rounded-md bg-primary/10 border border-primary"
+   className="mb-2 w-[35%] sm:w-[25%] md:w-[20%] lg:w-[16.66%] shrink-0 p-2 rounded-md bg-primary/10 border border-primary"
 >
   <img src={item} className="w-full h-auto rounded-md" />
   <div className="rounded-b-md">
