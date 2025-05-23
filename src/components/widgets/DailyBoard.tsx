@@ -9,7 +9,7 @@ const DailyBoard: React.FC = () => {
   return (
     <div className="px-2 xl:px-20">
       <Card className="overflow-hidden bg-black xl:max-w-4xl mx-auto border-primary rounded-2xl shadow-sm">
-        <CardHeader>
+        <CardHeader className="p-3 lg:p-6 xl:p-6">
           <CardTitle className="text-center">
             <span className="text-lg sm:text-2xl md:text-2xl font-semibold">Daily Board</span>
             <span className="ml-2 text-lg text-muted-foreground font-normal">
@@ -18,7 +18,7 @@ const DailyBoard: React.FC = () => {
           </CardTitle>
         </CardHeader>
 
-        <CardContent className="space-y-2 h-[150px] lg:h-[250px] overflow-y-scroll">
+        <CardContent className="space-y-2 h-[150px] lg:h-[250px] overflow-y-scroll p-3 lg:p-6 xl:p-6">
           <button
             className="mb-2 flex items-center justify-center mx-auto space-x-2 rounded-md border border-primary/20 bg-primary/5 px-5 py-1.5 text-sm font-bold text-primary hover:bg-primary/10 transition-colors"
             type="button"
