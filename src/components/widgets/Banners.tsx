@@ -1,7 +1,6 @@
-
 import { useState, useEffect, useCallback, useRef } from "react";
 import Autoplay, { AutoplayType } from "embla-carousel-autoplay";
- 
+
 import {
   Carousel,
   CarouselContent,
@@ -20,16 +19,16 @@ const Banners = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const [progress, setProgress] = useState<number[]>(new Array(data.length).fill(0));
-const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [progress, setProgress] = useState<number[]>(
+    new Array(data.length).fill(0)
+  );
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  
-const autoplay = Autoplay({ delay: 3000, stopOnInteraction: false });
+  const autoplay = Autoplay({ delay: 3000, stopOnInteraction: false });
 
+  const [emblaApi, setEmblaApi] = useState<CarouselApi | null>(null);
 
-   const [emblaApi, setEmblaApi] = useState<CarouselApi | null>(null);
-
-   useEffect(() => {
+  useEffect(() => {
     if (!emblaApi) return;
 
     const onSelect = () => {
@@ -37,25 +36,21 @@ const autoplay = Autoplay({ delay: 3000, stopOnInteraction: false });
     };
 
     emblaApi.on("select", onSelect);
-     onSelect();
+    onSelect();
 
     return () => {
       emblaApi.off("select", onSelect);
     };
   }, [emblaApi]);
 
-   const updateProgress = useCallback(() => {
-    setProgress((prev) =>
-      prev.map((_, i) => (i === activeIndex ? 0 : 100))
-    );
+  const updateProgress = useCallback(() => {
+    setProgress((prev) => prev.map((_, i) => (i === activeIndex ? 0 : 100)));
 
     if (intervalRef.current) clearInterval(intervalRef.current);
 
     intervalRef.current = setInterval(() => {
       setProgress((prev) =>
-        prev.map((val, i) =>
-          i === activeIndex ? Math.min(val + 2, 100) : val
-        )
+        prev.map((val, i) => (i === activeIndex ? Math.min(val + 2, 100) : val))
       );
     }, 60);
   }, [activeIndex]);
@@ -68,12 +63,12 @@ const autoplay = Autoplay({ delay: 3000, stopOnInteraction: false });
   }, [activeIndex, updateProgress]);
 
   return (
-    <div className="w-full relative px-5 ">
+    <div className="w-full relative px-2 lg:px-4">
       <Carousel
-       opts={{ loop: true }}
-  plugins={[autoplay as any]}
-  className="relative w-full"
-  setApi={setEmblaApi}
+        opts={{ loop: true }}
+        plugins={[autoplay as any]}
+        className="relative w-full"
+        setApi={setEmblaApi}
       >
         <CarouselContent>
           {data.map((item, index) => (
@@ -87,7 +82,7 @@ const autoplay = Autoplay({ delay: 3000, stopOnInteraction: false });
           ))}
         </CarouselContent>
 
-         <div className="absolute z-10 bottom-[50%] right-14 left-14">
+        <div className="absolute z-10 bottom-[50%] right-14 left-14">
           <CarouselPrevious className="bg-transparent border-2 border-white w-6 h-6 sm:w-10 sm:h-10 z-10" />
           <CarouselNext className="bg-transparent border-2 border-white w-6 h-6 sm:w-10 sm:h-10" />
         </div>
@@ -95,10 +90,7 @@ const autoplay = Autoplay({ delay: 3000, stopOnInteraction: false });
         {/* Progress Indicators */}
         <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 flex gap-2 w-full max-w-[220px] px-4">
           {progress.map((value, i) => (
-            <div
-              key={i}
-              className="w-full h-[5px] bg-black  overflow-hidden"
-            >
+            <div key={i} className="w-full h-[5px] bg-black  overflow-hidden">
               <div
                 className="h-full bg-activeGradient transition-all duration-75"
                 style={{ width: `${value}%` }}

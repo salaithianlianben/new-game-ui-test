@@ -10,16 +10,15 @@ import BannerText from "../../components/layout/BannerText";
 import DailyBoard from "../../components/widgets/DailyBoard";
 
 const HomePage = () => {
-  
   return (
     <div className="">
-      <GameCategoriesLg/>
-        <Ads/>
+      <GameCategoriesLg />
+      <Ads />
       <Banners />
-      <div className="p-4">
-        <BannerText/>
+      <div className="p-2 lg:px-4">
+        <BannerText />
       </div>
-      <DailyBoard/>
+      <DailyBoard />
       <HomeGames />
     </div>
   );
