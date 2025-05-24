@@ -17,13 +17,14 @@
  
 /* width */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
   border-radius: 5px;
-}
+ }
   
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888; 
+  min-height: 100px;
 }
 
 /* Handle on hover */
