@@ -1,7 +1,7 @@
 import React from "react";
 import winner from "../../../public/images/winner.png";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { User } from "lucide-react";
+import { ArrowDownCircleIcon, ChevronDownIcon, User } from "lucide-react";
 
 ("use client");
 
@@ -11,21 +11,27 @@ const DailyBoard: React.FC = () => {
       <Card className="overflow-hidden bg-black xl:max-w-4xl mx-auto border-primary rounded-2xl shadow-sm">
         <CardHeader className="p-3 lg:p-6 xl:p-6">
           <CardTitle className="text-center">
-            <span className="text-lg sm:text-2xl md:text-2xl font-semibold">Daily Board</span>
-            <span className="ml-2 text-lg text-muted-foreground font-normal">
+              <button
+            className="mb-2 flex items-center justify-center mx-auto space-x-1 rounded-md border border-primary/20 bg-primary/5 px-2 py-1 text-[13px] font-bold text-primary hover:bg-primary/10 transition-colors"
+            type="button"
+          >
+            <User size={18} />
+            <span>Win Amount</span>
+          </button>
+           <div className="flex items-center justify-between px-2">
+             <div className="">
+              <span className="text-base lg:text-lg font-semibold">Daily Board</span>
+            <span className="ml-2 text-base  lg:text-lg  text-muted-foreground font-normal">
               {new Date().toLocaleTimeString()}
             </span>
+             </div>
+            <p className="flex items-center gap-0.5 animate-bounce text-[13px]  text-primary duration-[3000]">Scroll Down <ArrowDownCircleIcon size={18} /> </p>
+           </div>
           </CardTitle>
         </CardHeader>
 
-        <CardContent className="space-y-2 h-[150px] lg:h-[250px] overflow-y-scroll p-3 lg:p-6 xl:p-6">
-          <button
-            className="mb-2 flex items-center justify-center mx-auto space-x-2 rounded-md border border-primary/20 bg-primary/5 px-5 py-1.5 text-sm font-bold text-primary hover:bg-primary/10 transition-colors"
-            type="button"
-          >
-            <User />
-            <span>Win Amount</span>
-          </button>
+        <CardContent className="space-y-2 h-[150px] lg:h-[250px] overflow-y-scroll px-3 lg:px-6 xl:px-6">
+        
           {[1, 2, 3, 4, 5, 6, 8, 9, 0].map((item) => (
             <Card
               key={item}
