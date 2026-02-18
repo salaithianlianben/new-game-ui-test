@@ -1,0 +1,26 @@
+Table,users,,,,,
+Purpose,Stores user-level configuration and identity information for chatbot usage and personalization.,,,,,
+Note,Used for chatbot configuration and personalization. Not intended for authentication logic,,,,,
+,,,,,,
+,,,,,,
+,,,,,,
+Column Name,Data Type,Nullable,Primary Key,Unique,Default / Constraint,Description
+id,Integer,No,Yes,No,Auto-increment,Primary identifier for the user
+email,String(320),No,No,Yes,Indexed,User email address
+chatbot_id,String(100),No,No,Yes,Indexed,Unique identifier for chatbot
+created_at,DateTime (timezone),No,No,No,server_default = now(),Record creation timestamp
+language,String(10),Yes,No,No,-,"Preferred language full name ( e.g, english, japanese )"
+model_name,String(255),Yes,No,No,DEFAULT_MODEL_NAME,Assigned LLM model
+tone_of_voice,String(20),Yes,No,No,-,Response tone / personality setting
+about_prompt,Text,Yes,No,No,-,Custom system or about prompt
+,,,,,,
+,,,,,,
+Constraints,"- email must be unique
+- chatbot_id must be unique
+- id is the primary key",,,,,
+,,,,,,
+Relationships,"One-to-Many:
+
+users → api_tokens
+One user can have multiple API tokens
+Cascade delete enabled (all, delete-orphan)",,,,,
